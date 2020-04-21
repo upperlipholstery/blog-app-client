@@ -10,6 +10,15 @@ function signUp (data) {
   })
 }
 
+function signIn (data) {
+  return $.ajax({
+    url: config.apiUrl + '/sign-in',
+    method: 'POST',
+    data
+  })
+}
+
 module.exports = {
-  signUp
+  signUp,
+  signIn
 }
