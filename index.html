@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Blog App</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -12,6 +12,32 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <h1>Blog App</h1>
+      <button id="sign-in-menu" class="btn btn-secondary my-2 my-sm-0" role="button" data-target="#signUpModal" data-toggle="modal" aria-haspopup="true" aria-expanded="false">
+        Sign up
+      </button>
+      <!-- Modal -->
+      <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Sign up</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form id="sign-up">
+                <fieldset>
+                    <input type="text" name="credentials[email]" placeholder="email@example.com"><br>
+                    <input type="password" name="credentials[password]" placeholder="Password"><br>
+                    <input type="password" name="credentials[password_confirmation]" placeholder="Confirm password"><br>
+                    <button id="sign-up-btn" type="button" class="btn btn-primary" data-dismiss="modal">Confirm</button>
+                </fieldset>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </body>
 </html>
