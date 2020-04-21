@@ -9,4 +9,5 @@ const authEvents = require('./auth/events')
 $(() => {
   $('#sign-up-btn').on('click', authEvents.onSignUp)
   $('#sign-in-btn').on('click', authEvents.onSignIn)
+  $('.change-password-button').on('click', authEvents.onChangePassword)
 })
