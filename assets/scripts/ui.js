@@ -10,11 +10,15 @@ function viewPostsSuccess (data) {
   console.log('viewpost')
   const showPostsHtml = showPostsTemplate({posts: data.posts})
   $('.content').html(showPostsHtml)
+  $('#content').removeClass('hidden')
+  $('#create-post-menu').addClass('hidden')
 }
 
 function viewUserPostsSuccess (data) {
   const showUserPostsHtml = showUserPostsTemplate({posts: data.posts})
   $('.content').html(showUserPostsHtml)
+  $('#content').removeClass('hidden')
+  $('#create-post-menu').addClass('hidden')
 }
 
 function viewPostsFailure () {
@@ -44,6 +48,7 @@ function signInSuccess (data) {
   console.log('sign in working')
   $('#view-user-posts-btn').removeClass('hidden')
   $('#account-menu').removeClass('hidden')
+  $('#create-post-btn').removeClass('hidden')
   $('#sign-up-menu').addClass('hidden')
   $('#sign-in-menu').addClass('hidden')
 }
@@ -62,6 +67,7 @@ function signOutSuccess () {
   $('#sign-in-menu').removeClass('hidden')
   $('#view-user-posts-btn').addClass('hidden')
   $('#account-menu').addClass('hidden')
+  $('#create-post-btn').addClass('hidden')
   $('#content').html('')
 }
 
@@ -77,6 +83,11 @@ function changePasswordFailure () {
   console.log('change password failed')
 }
 
+function showWritePost () {
+  $('#content').addClass('hidden')
+  $('#create-post-menu').removeClass('hidden')
+}
+
 module.exports = {
   signUpSuccess,
   signInSuccess,
@@ -90,5 +101,6 @@ module.exports = {
   viewUserPostsSuccess,
   viewPostsFailure,
   createPostSuccess,
-  createPostFailure
+  createPostFailure,
+  showWritePost
 }
