@@ -1,6 +1,8 @@
 'use strict'
 
-const store = require('./store')
+const store = require('./store'),
+showPostsTemplate = require('./templates/')
+
 
 function signUpSuccess (data) {
   store.user = data.user
