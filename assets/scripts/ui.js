@@ -1,17 +1,27 @@
 'use strict'
 
-const store = require('./store'),
-showPostsTemplate = require('./templates/blog-post.handlebars')
-
+const store = require('./store')
+const showPostsTemplate = require('./templates/blog-post.handlebars')
+const showUserPostsTemplate = require('./templates/owner-blog-posts.handlebars')
+const api = require('./posts/api')
 
 // POSTS CRUD
-const viewPostsSuccess = function(data) {
-  const showPostsHtml = showPostsTemplate({ posts: data.posts})
-  $('.content').append(showPostsHtml)
+function viewPostsSuccess (data) {
+  console.log('viewpost')
+  const showPostsHtml = showPostsTemplate({posts: data.posts})
+  $('.content').html(showPostsHtml)
 }
 
+function viewUserPostsSuccess (data) {
+  const showUserPostsHtml = showUserPostsTemplate({posts: data.posts})
+  $('.content').html(showUserPostsHtml)
+}
 
-// AUTHENTICATION 
+function viewPostsFailure () {
+  console.log('viewPosts failed')
+}
+
+// AUTHENTICATION
 
 function signUpSuccess (data) {
   store.user = data.user
@@ -20,9 +30,9 @@ function signUpSuccess (data) {
 
 function signInSuccess (data) {
   store.user = data.user
-  api.postsIndex()
-  .then(viewPostsSuccess)
-  .catch(viewPostsFailure)
+  api.viewPosts()
+    .then(viewPostsSuccess)
+    .catch(viewPostsFailure)
   console.log('sign in working')
 }
 
@@ -58,5 +68,7 @@ module.exports = {
   changePasswordSuccess,
   changePasswordFailure,
   signOutSuccess,
-  signOutFailure
+  signOutFailure,
+  viewPostsSuccess,
+  viewUserPostsSuccess
 }
