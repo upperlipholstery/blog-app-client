@@ -34,27 +34,47 @@ function viewPostSuccess (data) {
   $('#view-body').text(viewPostHtml)
 }
 
-function cancelUpdate (event) {
+function cancelUpdatePost (event) {
   event.preventDefault()
   store.updateItemId = undefined
 }
 
-function selectUpdate (event) {
+function selectUpdatePost (event) {
   event.preventDefault()
-  store.updateItemId = $(event.target).data('id')
-  console.log(store.updateItemId)
-  api.showPost(store.updateItemId)
+  store.updatePostId = $(event.target).data('id')
+  console.log(store.updatePostId)
+  api.showPost(store.updatePostId)
     .then(ui.updatePostsSuccess)
     .catch(ui.updatePostsFailure)
 }
 
-function onUpdatePractice (event) {
+function onUpdatePost (event) {
   event.preventDefault()
   console.log($('#edit-post')[0])
   const updateData = getFormFields($('#edit-post')[0])
-  api.updatePost(updateData, store.updateItemId)
+  api.updatePost(updateData, store.updatePostId)
     .then(ui.updatePostsSuccess)
     .catch(ui.updatePostsFailure)
+}
+
+function cancelDeletePost (event) {
+  event.preventDefault()
+  store.deletePostId = undefined
+}
+
+function selectDeletePost (event) {
+  event.preventDefault()
+  store.deletePostId = $(event.target).data('id')
+  api.showPost(store.deletePostId)
+    .then(ui.deletePostsSuccess)
+    .catch(ui.deletePostsFailure)
+}
+
+function onDeletePost (event) {
+  event.preventDefault()
+  api.deletePost(store.deletePostId)
+    .then(ui.deletePostsSuccess)
+    .catch(ui.deletePostsFailure)
 }
 
 // const updateCards = function (data) {
@@ -77,9 +97,12 @@ function onCreatePost (event) {
 module.exports = {
   onViewPosts,
   onUserViewPosts,
-  selectUpdate,
-  cancelUpdate,
-  onUpdatePractice,
+  selectUpdatePost,
+  cancelUpdatePost,
+  onUpdatePost,
   selectView,
-  onCreatePost
+  onCreatePost,
+  onDeletePost,
+  selectDeletePost,
+  cancelDeletePost
 }
