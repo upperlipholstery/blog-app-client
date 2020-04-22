@@ -3,9 +3,10 @@
 const store = require('./store')
 const showPostsTemplate = require('./templates/blog-post.handlebars')
 const showUserPostsTemplate = require('./templates/owner-blog-posts.handlebars')
-// const api = require('./posts/api')
+const postApi = require('./posts/api')
 
 // POSTS CRUD
+
 function viewPostsSuccess (data) {
   console.log('viewpost')
   const showPostsHtml = showPostsTemplate({posts: data.posts})
@@ -21,8 +22,23 @@ function viewUserPostsSuccess (data) {
   $('#create-post-menu').addClass('hidden')
 }
 
-function viewPostsFailure () {
-  console.log('viewPosts failed')
+function deletePostsSuccess () {
+  console.log('delete Posts success')
+  postApi.viewPosts()
+    .then(refreshListSuccess)
+    .catch(refreshListFailure)
+}
+
+function updatePostsSuccess () {
+  console.log('delete Posts success')
+  postApi.viewPosts()
+    .then(refreshListSuccess)
+    .catch(refreshListFailure)
+}
+
+function refreshListSuccess (data) {
+  const showUserPostsHtml = showUserPostsTemplate({posts: data.posts})
+  $('.content').html(showUserPostsHtml)
 }
 
 function createPostSuccess () {
@@ -30,9 +46,6 @@ function createPostSuccess () {
   $('.message').text('Post created')
 }
 
-function createPostFailure () {
-  $('.messge').text('failed to create post')
-}
 // AUTHENTICATION
 
 function signUpSuccess (data) {
@@ -53,14 +66,6 @@ function signInSuccess (data) {
   $('#sign-in-menu').addClass('hidden')
 }
 
-function signUpFailure () {
-  console.log('signUp failed')
-}
-
-function signInFailure () {
-  console.log('sign in failed')
-}
-
 function signOutSuccess () {
   console.log('sign out is working')
   $('#sign-up-menu').removeClass('hidden')
@@ -69,6 +74,32 @@ function signOutSuccess () {
   $('#account-menu').addClass('hidden')
   $('#create-post-btn').addClass('hidden')
   $('#content').html('')
+}
+
+// FAILURES
+
+function deletePostsFailure () {
+  console.log('delete Posts failed')
+}
+
+function refreshListFailure () {
+  console.log('delete Posts failed')
+}
+
+function viewPostsFailure () {
+  console.log('viewPosts failed')
+}
+
+function createPostFailure () {
+  $('.messge').text('failed to create post')
+}
+
+function signUpFailure () {
+  console.log('signUp failed')
+}
+
+function signInFailure () {
+  console.log('sign in failed')
 }
 
 function signOutFailure () {
@@ -102,5 +133,8 @@ module.exports = {
   viewPostsFailure,
   createPostSuccess,
   createPostFailure,
-  showWritePost
+  showWritePost,
+  deletePostsSuccess,
+  deletePostsFailure,
+  updatePostsSuccess
 }

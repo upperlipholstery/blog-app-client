@@ -37,9 +37,20 @@ function updatePost (data, id) {
   })
 }
 
+function deletePost (id) {
+  return $.ajax({
+    url: config.apiUrl + '/posts/' + id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   viewPosts,
   showPost,
   createPost,
-  updatePost
+  updatePost,
+  deletePost
 }
