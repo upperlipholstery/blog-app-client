@@ -1,6 +1,6 @@
 const ui            = require('./ui'),
       api           = require('./api'),
-      getFormFields = require('../../../lib/get-form-fields')
+      getFormFields = require('../../../../lib/get-form-fields')
 
 
 const onViewPosts = function(event) {
