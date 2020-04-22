@@ -5,7 +5,6 @@ const api = require('./api')
 const store = require('../store')
 const getFormFields = require('../../../lib/get-form-fields')
 const viewPostTemplate = require('../templates/view-body-template.handlebars')
-const getFormFields = require('../../../lib/get-form-fields')
 
 function onViewPosts (event) {
   event.preventDefault()
@@ -82,7 +81,4 @@ module.exports = {
   onUpdatePractice,
   selectView,
   onCreatePost
-}
-
-
 }
