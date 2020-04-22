@@ -1,15 +1,13 @@
-const   store     = require('../store'),
-        config  = require('../config')
+const store = require('../store')
+const config = require('../config')
 
-
-const viewPosts = function() {
-    return $.ajax({
-        url: config.apiUrl + '/posts',
-        method: 'GEt'
-    })
+function viewPosts () {
+  return $.ajax({
+    url: config.apiUrl + '/posts',
+    method: 'GET'
+  })
 }
 
 module.exports = {
-    viewPosts
+  viewPosts
 }
-
