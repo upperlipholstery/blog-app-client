@@ -30,10 +30,14 @@ function signUpSuccess (data) {
 
 function signInSuccess (data) {
   store.user = data.user
-  api.viewPosts()
-    .then(viewPostsSuccess)
-    .catch(viewPostsFailure)
+  // api.viewPosts()
+  //   .then(viewPostsSuccess)
+  //   .catch(viewPostsFailure)
   console.log('sign in working')
+  $('#view-user-posts-btn').removeClass('hidden')
+  $('#account-menu').removeClass('hidden')
+  $('#sign-up-menu').addClass('hidden')
+  $('#sign-in-menu').addClass('hidden')
 }
 
 function signUpFailure () {
@@ -46,6 +50,11 @@ function signInFailure () {
 
 function signOutSuccess () {
   console.log('sign out is working')
+  $('#sign-up-menu').removeClass('hidden')
+  $('#sign-in-menu').removeClass('hidden')
+  $('#view-user-posts-btn').addClass('hidden')
+  $('#account-menu').addClass('hidden')
+  $('#content').html('')
 }
 
 function signOutFailure () {
@@ -70,5 +79,6 @@ module.exports = {
   signOutSuccess,
   signOutFailure,
   viewPostsSuccess,
-  viewUserPostsSuccess
+  viewUserPostsSuccess,
+  viewPostsFailure
 }

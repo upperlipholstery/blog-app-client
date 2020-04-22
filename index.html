@@ -21,14 +21,6 @@
       <button id="sign-in-menu" class="btn btn-secondary my-2 my-sm-0" role="button" data-target="#signInModal" data-toggle="modal" aria-haspopup="true" aria-expanded="false">
         Sign in
       </button>
-      <!-- Change Password -->
-      <button type="button" class="btn btn-secondary my-2 my-sm-0" data-toggle="modal" data-target="#changePasswordModal">
-        Change Password
-      </button>
-      <!-- Sign Out -->
-      <button id="sign-out-btn" class="btn btn-secondary my-2 my-sm-0">
-        Sign Out
-      </button>
       <!-- View Button -->
       <!-- <button data-id="{{post.id}}" type="button" class="btn btn-outline-success my-2 my-sm-0 view-modalLong" data-toggle="modal" data-target="#viewModalLong">
         View
@@ -43,10 +35,29 @@
       </button> -->
       <!-- Test Button -->
       <button id="view-posts-btn" class="btn btn-secondary">
-        View Posts
+        Feed
       </button>
+      <button id="view-user-posts-btn" class="btn btn-secondary hidden">
+        My Posts
+      </button>
+      <!-- Account Menu -->
+      <div class="dropright">
+        <button id="account-menu" class="btn btn-secondary hidden" type="button" data-toggle="dropdown">
+          Account
+        </button>
+        <!-- Change password -->
+        <div class="dropdown-menu" aria-labelledby="dropdown">
+          <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#changePasswordModal">
+            Change Password
+          </button>
+          <!-- Sign Out -->
+          <button id="sign-out-btn" class="btn btn-secondary">
+            Sign Out
+          </button>
+        </div>
+      </div>
       <!-- Input Menu -->
-      <div id="create-post-menu" class="container col-6 rounded border border-white">
+      <div id="create-post-menu" class="container col-6 rounded border border-white hidden">
         <form id="create-post">
           <div class="form-group">
             <input class="form-input form-control" type="text" name="post[title]" placeholder="Title">
@@ -58,7 +69,7 @@
         </form>
       </div>
       <!-- handlebars display -->
-      <div class="content" id="content"></div>
+      <div class="content container" id="content"></div>
       <!-- Sign Up Modal -->
       <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
