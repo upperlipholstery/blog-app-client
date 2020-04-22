@@ -1,6 +1,17 @@
 'use strict'
 
-const store = require('./store')
+const store = require('./store'),
+showPostsTemplate = require('./templates/blog-post.handlebars')
+
+
+// POSTS CRUD
+const viewPostsSuccess = function(data) {
+  const showPostsHtml = showPostsTemplate({ posts: data.posts})
+  $('.content').append(showPostsHtml)
+}
+
+
+// AUTHENTICATION 
 
 function signUpSuccess (data) {
   store.user = data.user
@@ -9,6 +20,9 @@ function signUpSuccess (data) {
 
 function signInSuccess (data) {
   store.user = data.user
+  api.postsIndex()
+  .then(viewPostsSuccess)
+  .catch(viewPostsFailure)
   console.log('sign in working')
 }
 
