@@ -21,12 +21,17 @@
       <button id="sign-in-menu" class="btn btn-secondary my-2 my-sm-0" role="button" data-target="#signInModal" data-toggle="modal" aria-haspopup="true" aria-expanded="false">
         Sign in
       </button>
-      <!-- Test Button -->
+      <!-- Feed Button -->
       <button id="view-posts-btn" class="btn btn-secondary">
         Feed
       </button>
+      <!-- My posts Button -->
       <button id="view-user-posts-btn" class="btn btn-secondary hidden">
         My Posts
+      </button>
+      <!-- Write post button -->
+      <button id="create-post-btn" class="btn btn-secondary hidden">
+        Write Post
       </button>
       <!-- Account Menu -->
       <div class="dropright">
@@ -45,7 +50,7 @@
         </div>
       </div>
       <!-- Input Menu -->
-      <div id="create-post-menu" class="container col-6 rounded border border-white">
+      <div id="create-post-menu" class="container col-6 rounded border border-white hidden">
         <form id="create-post">
           <div class="form-group">
             <input class="form-input form-control" type="text" name="post[title]" placeholder="Title">

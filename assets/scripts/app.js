@@ -4,6 +4,7 @@
 // const example = require('./example')
 const postEvents = require('./posts/events')
 const authEvents = require('./auth/events')
+const ui = require('./ui')
 // use require without a reference to ensure a file is bundled
 // require('./example')
 
@@ -28,4 +29,5 @@ $(() => {
 
   // create action
   $('#create-post').on('submit', postEvents.onCreatePost)
+  $('#create-post-btn').on('click', ui.showWritePost)
 })
