@@ -23,9 +23,14 @@ $(() => {
   $('.content').on('click', '.view-modal', postEvents.selectView)
 
   // Update actions
-  $('.update-button').on('click', postEvents.onUpdatePractice)
-  $('.cancel-update').on('click', postEvents.cancelUpdate)
-  $('.content').on('click', '.update-modal', postEvents.selectUpdate)
+  $('.update-button').on('click', postEvents.onUpdatePost)
+  $('.cancel-update').on('click', postEvents.cancelUpdatePost)
+  $('.content').on('click', '.update-modal', postEvents.selectUpdatePost)
+
+  // Delete actions
+  $('.delete-button').on('click', postEvents.onDeletePost)
+  $('.cancel-delete').on('click', postEvents.cancelDeletePost)
+  $('.content').on('click', '.delete-modal', postEvents.selectDeletePost)
 
   // create action
   $('#create-post').on('submit', postEvents.onCreatePost)
