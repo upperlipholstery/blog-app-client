@@ -15,6 +15,17 @@ function showPost (id) {
   })
 }
 
+function createPost (data) {
+  return $.ajax({
+    url: config.apiUrl + 'posts',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
 function updatePost (data, id) {
   return $.ajax({
     url: config.apiUrl + '/posts/' + id,
@@ -29,5 +40,6 @@ function updatePost (data, id) {
 module.exports = {
   viewPosts,
   showPost,
+  createPost,
   updatePost
 }

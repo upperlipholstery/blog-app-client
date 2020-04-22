@@ -21,6 +21,13 @@ function viewPostsFailure () {
   console.log('viewPosts failed')
 }
 
+function createPostSuccess () {
+  $('.message').text('Post created')
+}
+
+function createPostFailure () {
+  $('.messge').text('failed to create post')
+}
 // AUTHENTICATION
 
 function signUpSuccess (data) {
@@ -80,5 +87,7 @@ module.exports = {
   signOutFailure,
   viewPostsSuccess,
   viewUserPostsSuccess,
-  viewPostsFailure
+  viewPostsFailure,
+  createPostSuccess,
+  createPostFailure
 }

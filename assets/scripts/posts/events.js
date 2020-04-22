@@ -5,6 +5,7 @@ const api = require('./api')
 const store = require('../store')
 const getFormFields = require('../../../lib/get-form-fields')
 const viewPostTemplate = require('../templates/view-body-template.handlebars')
+const getFormFields = require('../../../lib/get-form-fields')
 
 function onViewPosts (event) {
   event.preventDefault()
@@ -65,11 +66,23 @@ function onUpdatePractice (event) {
 //   $('#content').append(updateTableHtml)
 // }
 
+function onCreatePost (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  api.createPost(data)
+    .then(ui.createPostSuccess)
+    .catch(ui.createPostFailure)
+}
+
 module.exports = {
   onViewPosts,
   onUserViewPosts,
   selectUpdate,
   cancelUpdate,
   onUpdatePractice,
-  selectView
+  selectView,
+  onCreatePost
+}
+
+
 }
