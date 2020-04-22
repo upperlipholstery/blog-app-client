@@ -13,6 +13,7 @@ $(() => {
   $('#sign-in-btn').on('click', authEvents.onSignIn)
   $('.change-password-button').on('click', authEvents.onChangePassword)
   $('#sign-out-btn').on('click', authEvents.onSignOut)
+
   // POST EVENTS
   $('#view-posts-btn').on('click', postEvents.onViewPosts)
   $('#view-user-posts-btn').on('click', postEvents.onUserViewPosts)
@@ -24,6 +25,7 @@ $(() => {
   $('.update-button').on('click', postEvents.onUpdatePractice)
   $('.cancel-update').on('click', postEvents.cancelUpdate)
   $('.content').on('click', '.update-modal', postEvents.selectUpdate)
+
   // create action
   $('#create-post').on('submit', postEvents.onCreatePost)
 })

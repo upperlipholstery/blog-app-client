@@ -17,7 +17,7 @@ function showPost (id) {
 
 function createPost (data) {
   return $.ajax({
-    url: config.apiUrl + 'posts',
+    url: config.apiUrl + '/posts',
     method: 'POST',
     headers: {
       Authorization: 'Token token=' + store.user.token

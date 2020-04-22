@@ -3,9 +3,9 @@
     <div class="card" style="width: 18rem;">
       <div class="card-body">
         {{post.title}}<br>
-        {{post.owner}}
-        {{post.createdAt}}
-        <button data-id="{{post._id}}" type="button" class="btn btn-outline-success my-2 my-sm-0 view-modal" data-toggle="modal" data-target="#viewModalLong">
+        {{post.owner.email}}<br>
+        {{post.createdAt}}<br>
+        <button data-id="{{post._id}}" type="button" class="btn btn-outline-primary my-2 my-sm-0 view-modal" data-toggle="modal" data-target="#viewModalLong">
           View
         </button>
       </div>

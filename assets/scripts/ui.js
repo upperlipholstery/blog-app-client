@@ -22,6 +22,7 @@ function viewPostsFailure () {
 }
 
 function createPostSuccess () {
+  console.log('create post success')
   $('.message').text('Post created')
 }
 
