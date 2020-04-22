@@ -14,4 +14,5 @@ $(() => {
   $('#sign-out-btn').on('click', authEvents.onSignOut)
 
   $('#view-posts-btn').on('click', postEvents.onViewPosts)
+  $('#view-user-posts-btn').on('click', postEvents.onUserViewPosts)
 })

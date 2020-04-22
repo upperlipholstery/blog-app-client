@@ -1,15 +1,15 @@
 {{#each posts as |post|}}
-  <section data-id="{{post.id}}" class="practice-item">
+  <section data-id="{{post._id}}" class="practice-item">
     <div class="card" style="width: 18rem;">
       <div class="card-body">
         {{post.title}}<br>
         {{post.owner}}
         {{post.date_time}}
         {{post.body}}
-        <button data-id="{{post.id}}" type="button" class="btn btn-outline-success my-2 my-sm-0 update-modal" data-toggle="modal" data-target="#editModalLong">
+        <button data-id="{{post._id}}" type="button" class="btn btn-outline-success my-2 my-sm-0 update-modal" data-toggle="modal" data-target="#editModalLong">
           Edit
         </button>
-        <button data-id="{{post.id}}" type="button" class="btn btn-outline-danger delete-modal" data-toggle="modal" data-target="#deleteModal">
+        <button data-id="{{post._id}}" type="button" class="btn btn-outline-danger delete-modal" data-toggle="modal" data-target="#deleteModal">
           Delete
         </button>
       </div>
