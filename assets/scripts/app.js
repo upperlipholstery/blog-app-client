@@ -15,4 +15,12 @@ $(() => {
 
   $('#view-posts-btn').on('click', postEvents.onViewPosts)
   $('#view-user-posts-btn').on('click', postEvents.onUserViewPosts)
+
+  // View actions
+  $('.content').on('click', '.view-modal', postEvents.selectView)
+
+  // Update actions
+  $('.update-button').on('click', postEvents.onUpdatePractice)
+  $('.cancel-update').on('click', postEvents.cancelUpdate)
+  $('.content').on('click', '.update-modal', postEvents.selectUpdate)
 })
