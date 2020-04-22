@@ -20,6 +20,14 @@ function signInFailure () {
   console.log('sign in failed')
 }
 
+function signOutSuccess () {
+  console.log('sign out is working')
+}
+
+function signOutFailure () {
+  console.log('sign out failed')
+}
+
 function changePasswordSuccess () {
   console.log('change password working')
 }
@@ -34,5 +42,7 @@ module.exports = {
   signInFailure,
   signUpFailure,
   changePasswordSuccess,
-  changePasswordFailure
+  changePasswordFailure,
+  signOutSuccess,
+  signOutFailure
 }
