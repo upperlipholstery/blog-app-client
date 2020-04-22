@@ -3,7 +3,7 @@
 const store = require('./store')
 const showPostsTemplate = require('./templates/blog-post.handlebars')
 const showUserPostsTemplate = require('./templates/owner-blog-posts.handlebars')
-const api = require('./posts/api')
+// const api = require('./posts/api')
 
 // POSTS CRUD
 function viewPostsSuccess (data) {

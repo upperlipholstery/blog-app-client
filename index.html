@@ -21,18 +21,6 @@
       <button id="sign-in-menu" class="btn btn-secondary my-2 my-sm-0" role="button" data-target="#signInModal" data-toggle="modal" aria-haspopup="true" aria-expanded="false">
         Sign in
       </button>
-      <!-- View Button -->
-      <!-- <button data-id="{{post.id}}" type="button" class="btn btn-outline-success my-2 my-sm-0 view-modalLong" data-toggle="modal" data-target="#viewModalLong">
-        View
-      </button> -->
-      <!-- Edit Button -->
-      <!-- <button data-id="{{post.id}}" type="button" class="btn btn-outline-success my-2 my-sm-0 update-modalLong" data-toggle="modal" data-target="#editModalLong">
-        Edit
-      </button> -->
-      <!-- Delete Button -->
-      <!-- <button data-id="{{post.id}}" type="button" class="btn btn-outline-danger delete-modal" data-toggle="modal" data-target="#deleteModal">
-        Delete
-      </button> -->
       <!-- Test Button -->
       <button id="view-posts-btn" class="btn btn-secondary">
         Feed
@@ -174,7 +162,7 @@
                 <input class="form-input form-control" type="text" name="post[title]" placeholder="Title">
               </div>
               <div class="form-group">
-                <textarea class="form-input form-control" name="post[body]" placeholder="Body" rows="10"></textarea>
+                <textarea id="oldPostBody" class="form-input form-control" name="post[body]" placeholder="Body" rows="10"></textarea>
               </div>
               <input type="submit" value="Create" class="btn btn-outline-dark my-2 my-sm-0">
             </form>
@@ -191,12 +179,12 @@
       <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Edit Post</h5>
+            <h5 class="modal-title" id="view-title"></h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body" id="view-body">
             Filler
           </div>
           <div class="modal-footer">
