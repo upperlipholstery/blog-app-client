@@ -9,7 +9,6 @@ const postApi = require('./posts/api')
 // POSTS CRUD
 
 function viewPostsSuccess (data) {
-  console.log('viewpost')
   const showPostsHtml = showPostsTemplate({posts: data.posts})
   $('.content').html(showPostsHtml)
   $('#post-content').removeClass('hidden')

@@ -22,14 +22,22 @@ function onUserViewPosts () {
 
 function selectView (event) {
   event.preventDefault()
-  const viewItemId = $(event.target).data('id')
-  api.showPost(viewItemId)
+  store.viewItemId = $(event.target).data('id')
+  api.showPost(store.viewItemId)
     .then(viewPostSuccess)
     .catch(ui.viewPostFailure)
 }
 
 function viewPostSuccess (data) {
-  console.log(data.post)
+  if (store.user) {
+    data.post.comments.forEach(x => {
+      if (x.owner === store.user._id) {
+        x.own = true
+      } else {
+        x.own = false
+      }
+    })
+  }
   const viewPostHtml = viewPostTemplate({post: data.post})
   $('#viewModalLong').html(viewPostHtml)
 }

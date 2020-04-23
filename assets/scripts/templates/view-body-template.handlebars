@@ -7,7 +7,31 @@
       </button>
     </div>
     <div class="modal-body" id="view-body">
-      {{post.body}}
+      {{post.body}}<br>
+      {{#each post.comments as |comment|}}
+      {{log comment}}
+      <div>
+        {{comment.body}}<br>
+      <div>
+      <div>
+        {{#if comment.own}}
+        <button data-id="{{comment._id}}" type="button" class="btn btn-outline-success my-2 my-sm-0 update-modal" data-toggle="modal" data-target="#editModalLong">
+          Edit
+        </button>
+        <button data-id="{{comment._id}}" type="button" class="btn btn-outline-danger delete-modal" data-toggle="modal" data-target="#deleteModal">
+          Delete
+        </button>
+        {{/if}}
+      </div>
+      {{/each}}
+      <div id="create-comment-menu" class="container col-12 rounded border border-white">
+        <form id="create-comment">
+          <div class="form-group">
+            <textarea class="form-input form-control" name="comment[body]" placeholder="Body" rows="5"></textarea>
+          </div>
+          <input type="submit" value="Submit" class="btn btn-outline-dark my-2 my-sm-0">
+        </form>
+      </div>
     </div>
     <div class="modal-footer">
       <div class="mr-auto"><h5>Written by: {{post.owner.email}} on {{post.createdAt}}</h5></div>
@@ -15,4 +39,3 @@
     </div>
   </div>
 </div>
-{{post.comments}}
