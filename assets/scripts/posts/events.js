@@ -31,7 +31,7 @@ function selectView (event) {
 function viewPostSuccess (data) {
   console.log(data.post)
   const viewPostHtml = viewPostTemplate({post: data.post})
-  $('#view-body').text(viewPostHtml)
+  $('#viewModalLong').html(viewPostHtml)
 }
 
 function cancelUpdatePost (event) {
@@ -44,7 +44,7 @@ function selectUpdatePost (event) {
   store.updatePostId = $(event.target).data('id')
   console.log(store.updatePostId)
   api.showPost(store.updatePostId)
-    .then(ui.updatePostsSuccess)
+    .then(ui.selectUpdatePostsSuccess)
     .catch(ui.updatePostsFailure)
 }
 

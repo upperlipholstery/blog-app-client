@@ -24,7 +24,7 @@ $(() => {
   $('.content').on('click', '.view-modal', postEvents.selectView)
 
   // Update actions
-  $('.update-button').on('click', postEvents.onUpdatePost)
+  $('#editModalLong').on('click', '.update-button', postEvents.onUpdatePost)
   $('.cancel-update').on('click', postEvents.cancelUpdatePost)
   $('.content').on('click', '.update-modal', postEvents.selectUpdatePost)
 
