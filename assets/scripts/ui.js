@@ -9,6 +9,12 @@ const postApi = require('./posts/api')
 // POSTS CRUD
 
 function viewPostsSuccess (data) {
+  data.posts = data.posts.sort(function (a, b) {
+    a = new Date(a.createdAt)
+    b = new Date(b.createdAt)
+    return a > b ? -1 : a < b ? 1 : 0
+  })
+  data.posts.forEach(x => { x.createdAt = (new Date(x.createdAt).toDateString()) })
   const showPostsHtml = showPostsTemplate({posts: data.posts})
   $('.content').html(showPostsHtml)
   $('#post-content').removeClass('hidden')
@@ -16,6 +22,12 @@ function viewPostsSuccess (data) {
 }
 
 function viewUserPostsSuccess (data) {
+  data.posts = data.posts.sort(function (a, b) {
+    a = new Date(a.createdAt)
+    b = new Date(b.createdAt)
+    return a > b ? -1 : a < b ? 1 : 0
+  })
+  data.posts.forEach(x => { x.createdAt = (new Date(x.createdAt).toDateString()) })
   const showUserPostsHtml = showUserPostsTemplate({posts: data.posts})
   $('.content').html(showUserPostsHtml)
   $('#post-content').removeClass('hidden')
