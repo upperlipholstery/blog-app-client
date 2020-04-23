@@ -1,5 +1,14 @@
 @import '~bootstrap/scss/bootstrap';
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+#create-post-menu {
+  margin-top: 45px;
+}
+
 .hidden {
   display: none;
 }
@@ -31,4 +40,12 @@
 
 .post-item {
   margin: 15px;
+}
+
+.modal-header {
+  border-bottom: 0 none;
+}
+
+.modal-footer {
+  border-top: 0 none;
 }

@@ -68,7 +68,7 @@
               <input class="form-input form-control" type="text" name="post[title]" placeholder="Title">
             </div>
             <div class="form-group">
-              <textarea class="form-input form-control" name="post[body]" placeholder="Body" rows="10"></textarea>
+              <textarea class="form-input form-control" name="post[body]" placeholder="Body" rows="30"></textarea>
             </div>
             <input type="submit" value="Create" class="btn btn-outline-dark my-2 my-sm-0">
           </form>
@@ -151,7 +151,7 @@
       </div>
     <!-- Delete Modal -->
     <div class="modal fade deleteModal" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered " role="document">
+      <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Confirm Deletion</h5>
@@ -185,7 +185,7 @@
                 <input class="form-input form-control" type="text" name="post[title]" placeholder="Title">
               </div>
               <div class="form-group">
-                <textarea id="oldPostBody" class="form-input form-control" name="post[body]" placeholder="Body" rows="10"></textarea>
+                <textarea id="oldPostBody" class="form-input form-control" name="post[body]" placeholder="Body" rows="40"></textarea>
               </div>
             </form>
           </div>
@@ -197,7 +197,7 @@
       </div>
     </div>
     <!-- View Modal -->
-    <div data-id="{{practice.id}}" id="viewModalLong" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div id="viewModalLong" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
           <div class="modal-header">
