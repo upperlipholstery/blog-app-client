@@ -17,6 +17,7 @@ $(() => {
 
   // POST EVENTS
   $('#view-posts-btn').on('click', postEvents.onViewPosts)
+  $('#view-posts-btn-2').on('click', postEvents.onViewPosts)
   $('#view-user-posts-btn').on('click', postEvents.onUserViewPosts)
 
   // View actions

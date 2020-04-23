@@ -11,14 +11,14 @@ function viewPostsSuccess (data) {
   console.log('viewpost')
   const showPostsHtml = showPostsTemplate({posts: data.posts})
   $('.content').html(showPostsHtml)
-  $('#content').removeClass('hidden')
+  $('#post-content').removeClass('hidden')
   $('#create-post-menu').addClass('hidden')
 }
 
 function viewUserPostsSuccess (data) {
   const showUserPostsHtml = showUserPostsTemplate({posts: data.posts})
   $('.content').html(showUserPostsHtml)
-  $('#content').removeClass('hidden')
+  $('#post-content').removeClass('hidden')
   $('#create-post-menu').addClass('hidden')
 }
 
@@ -59,20 +59,14 @@ function signInSuccess (data) {
   //   .then(viewPostsSuccess)
   //   .catch(viewPostsFailure)
   console.log('sign in working')
-  $('#view-user-posts-btn').removeClass('hidden')
-  $('#account-menu').removeClass('hidden')
-  $('#create-post-btn').removeClass('hidden')
-  $('#sign-up-menu').addClass('hidden')
-  $('#sign-in-menu').addClass('hidden')
+  $('#regsidebar').removeClass('hidden')
+  $('#unregsidebar').addClass('hidden')
 }
 
 function signOutSuccess () {
   console.log('sign out is working')
-  $('#sign-up-menu').removeClass('hidden')
-  $('#sign-in-menu').removeClass('hidden')
-  $('#view-user-posts-btn').addClass('hidden')
-  $('#account-menu').addClass('hidden')
-  $('#create-post-btn').addClass('hidden')
+  $('#unregsidebar').removeClass('hidden')
+  $('#regsidebar').addClass('hidden')
   $('#content').html('')
 }
 
@@ -115,7 +109,7 @@ function changePasswordFailure () {
 }
 
 function showWritePost () {
-  $('#content').addClass('hidden')
+  $('#post-content').addClass('hidden')
   $('#create-post-menu').removeClass('hidden')
 }
 
