@@ -1,9 +1,9 @@
 {{#each posts as |post|}}
-  <section data-id="{{post._id}}" class="practice-item">
-    <div class="card" style="width: 18rem;">
+  <section data-id="{{post._id}}" class="post-item">
+    <div class="card" style="width: 15rem;">
       <div class="card-body">
-        {{post.title}}<br>
-        {{post.owner.email}}<br>
+        <h3>{{post.title}}</h3>
+        <p>Wtritten by: {{post.owner.email}}</p>
         {{post.createdAt}}<br>
         <button data-id="{{post._id}}" type="button" class="btn btn-outline-primary my-2 my-sm-0 view-modal" data-toggle="modal" data-target="#viewModalLong">
           View
