@@ -3,6 +3,7 @@
 const store = require('./store')
 const showPostsTemplate = require('./templates/blog-post.handlebars')
 const showUserPostsTemplate = require('./templates/owner-blog-posts.handlebars')
+const populateUpdateTemplate = require('./templates/populate-update-template.handlebars')
 const postApi = require('./posts/api')
 
 // POSTS CRUD
@@ -29,8 +30,15 @@ function deletePostsSuccess () {
     .catch(refreshListFailure)
 }
 
+function selectUpdatePostsSuccess (data) {
+  console.log(data)
+  console.log('selectUpdatePostsSuccess')
+  const populateUpdateHtml = populateUpdateTemplate({post: data.post})
+  console.log(populateUpdateHtml)
+  $('#editModalLong').html(populateUpdateHtml)
+}
+
 function updatePostsSuccess () {
-  console.log('delete Posts success')
   postApi.viewPosts()
     .then(refreshListSuccess)
     .catch(refreshListFailure)
@@ -130,5 +138,6 @@ module.exports = {
   showWritePost,
   deletePostsSuccess,
   deletePostsFailure,
-  updatePostsSuccess
+  updatePostsSuccess,
+  selectUpdatePostsSuccess
 }
