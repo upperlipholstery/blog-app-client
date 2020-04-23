@@ -24,11 +24,14 @@ function selectView (event) {
   event.preventDefault()
   store.viewItemId = $(event.target).data('id')
   api.showPost(store.viewItemId)
-    .then(viewPostSuccess)
+    .then(viewSinglePostSuccess)
     .catch(ui.viewPostFailure)
 }
 
-function viewPostSuccess (data) {
+function viewSinglePostSuccess (data) {
+  const a = new Date(data.post.createdAt)
+  data.post.createdAt = a.toDateString()
+  data.post.createdTime = a.toTimeString()
   if (store.user) {
     data.post.comments.forEach(x => {
       if (x.owner === store.user._id) {
