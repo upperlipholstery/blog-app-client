@@ -3,6 +3,7 @@
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example')
 const postEvents = require('./posts/events')
+const commentEvents = require('./comments/events')
 const authEvents = require('./auth/events')
 const ui = require('./ui')
 // use require without a reference to ensure a file is bundled
@@ -36,4 +37,7 @@ $(() => {
   // create action
   $('#create-post').on('submit', postEvents.onCreatePost)
   $('#create-post-btn').on('click', ui.showWritePost)
+
+  // Create comment
+  $('#viewModalLong').on('submit', '#create-comment', commentEvents.onCreateComment)
 })
