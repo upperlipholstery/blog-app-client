@@ -16,28 +16,31 @@ $(() => {
   $('.change-password-button').on('click', authEvents.onChangePassword)
   $('#sign-out-btn').on('click', authEvents.onSignOut)
 
-  // POST EVENTS
+  // VIEW EVENTS
   $('#view-posts-btn').on('click', postEvents.onViewPosts)
   $('#view-posts-btn-2').on('click', postEvents.onViewPosts)
   $('#view-user-posts-btn').on('click', postEvents.onUserViewPosts)
-
-  // View actions
   $('.content').on('click', '.view-modal', postEvents.selectView)
 
-  // Update actions
+  // Update post actions
   $('#editModalLong').on('click', '.update-button', postEvents.onUpdatePost)
   $('.cancel-update').on('click', postEvents.cancelUpdatePost)
   $('.content').on('click', '.update-modal', postEvents.selectUpdatePost)
 
-  // Delete actions
+  // Delete post actions
   $('.delete-button').on('click', postEvents.onDeletePost)
   $('.cancel-delete').on('click', postEvents.cancelDeletePost)
   $('.content').on('click', '.delete-modal', postEvents.selectDeletePost)
 
-  // create action
+  // create post action
   $('#create-post').on('submit', postEvents.onCreatePost)
   $('#create-post-btn').on('click', ui.showWritePost)
 
   // Create comment
   $('#viewModalLong').on('submit', '#create-comment', commentEvents.onCreateComment)
+
+  // Update comment actions
+  $('#editModalLong').on('click', '.update-button', commentEvents.onUpdateComment)
+  $('.cancel-update').on('click', commentEvents.cancelUpdatePost)
+  $('.content').on('click', '.update-modal', commentEvents.selectUpdateComment)
 })
