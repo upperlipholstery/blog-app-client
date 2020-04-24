@@ -68,9 +68,9 @@ function createPostSuccess () {
 
 function signUpSuccess (data) {
   store.user = data.user
-  api.signUp(data)
-    .then(signInSuccess)
-    .catch(signInFailure)
+//  api.signUp(data)
+//    .then(signInSuccess)
+//    .catch(signInFailure)
   console.log('signUp working')
 }
 
