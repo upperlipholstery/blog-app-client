@@ -14,6 +14,26 @@ function createComment (data) {
   })
 }
 
+function showComment (id) {
+  return $.ajax({
+    url: config.apiUrl + '/comments/' + id,
+    method: 'GET'
+  })
+}
+
+function updateComment (data, id) {
+  return $.ajax({
+    url: config.apiUrl + '/comments/' + id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
 module.exports = {
-  createComment
+  createComment,
+  showComment,
+  updateComment
 }

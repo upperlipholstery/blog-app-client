@@ -29,11 +29,11 @@ function selectView (event) {
 }
 
 function viewSinglePostSuccess (data) {
-  const a = new Date(data.post.createdAt)
+  const a = new Date(data.post[0].createdAt)
   data.post.createdAt = a.toDateString()
   data.post.createdTime = a.toTimeString()
   if (store.user) {
-    data.post.comments.forEach(x => {
+    data.post[0].comments.forEach(x => {
       if (x.owner === store.user._id) {
         x.own = true
       } else {
@@ -41,7 +41,7 @@ function viewSinglePostSuccess (data) {
       }
     })
   }
-  const viewPostHtml = viewPostTemplate({post: data.post})
+  const viewPostHtml = viewPostTemplate({post: data.post[0]})
   $('#viewModalLong').html(viewPostHtml)
 }
 

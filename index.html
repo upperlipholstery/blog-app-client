@@ -14,7 +14,7 @@
     <body>
       <!-- Unregistered sidebar -->
       <div id="unregsidebar" class="sidenav overflow-auto">
-        <h1>Blog App</h1>
+        <div class="logo"></div>
         <!-- Sign Up -->
         <button id="sign-up-menu" class="btn btn-secondary btn-block sidebar-item" role="button" data-target="#signUpModal" data-toggle="modal" aria-haspopup="true" aria-expanded="false">
           Create Account
@@ -30,7 +30,7 @@
       </div>
       <!-- Registered sidebar -->
       <div id="regsidebar" class="sidenav overflow-auto hidden">
-        <h1>Blog App</h1>
+        <div class="logo"></div>
         <!-- Feed Button 2 -->
         <button id="view-posts-btn-2" class="btn btn-secondary btn-block sidebar-item">
           Feed
@@ -172,7 +172,7 @@
     <!-- Edit Modal -->
     <div data-id="{{practice.id}}" id="editModalLong" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-xl" role="document">
-        <div class="modal-content">
+        <div class="modal-content paper">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Edit Post</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -199,7 +199,7 @@
     <!-- View Modal -->
     <div id="viewModalLong" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-xl" role="document">
-        <div class="modal-content">
+        <div class="modal-content paper">
           <div class="modal-header">
             <h5 class="modal-title" id="view-title"></h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">

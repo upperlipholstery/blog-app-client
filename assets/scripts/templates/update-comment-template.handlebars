@@ -1,0 +1,14 @@
+<div class="container col-12 rounded border edit-comment-menu border-white">
+  <form class="edit-comment-form" data-id="{{comment._id}}">
+    <div class="form-group">
+      <textarea class="form-input form-control" name="comment[body]" placeholder="Body" rows="5">{{comment.body}}</textarea>
+    </div>
+  </form>
+  <button data-id="{{comment._id}}" type="button" class="btn btn-success my-2 my-sm-0 confirm-comment-edit">
+    Confirm
+  </button>
+  <button data-id="{{comment._id}}" type="button" class="btn btn-secondary my-2 my-sm-0 cancel-comment-edit">
+    Cancel
+  </button>
+</div>
+</div>

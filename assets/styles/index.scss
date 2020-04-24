@@ -5,8 +5,27 @@ html, body {
   margin: 0;
 }
 
+body {
+  background-image: url('https://imgur.com/oR66g1I.png');
+  background-position: center;
+}
+
 #create-post-menu {
   margin-top: 45px;
+}
+
+.modal-content {
+  background-color: #000;
+  background-image: url('https://imgur.com/1wFd5FS.png');
+  background-position: center;
+  background-size: cover;
+}
+
+.card-body {
+  background-image: url('https://imgur.com/rL9Npsw.png');
+  background-position: center;
+  background-size: cover;
+  color: #fff;
 }
 
 .hidden {
@@ -15,6 +34,8 @@ html, body {
 
 .sidenav {
   background-color: #111;
+  background-image: url('https://imgur.com/cKYVZda.png');
+  background-position: center;
   height: 100%;
   justify-content: center;
   left: 0;
@@ -25,6 +46,14 @@ html, body {
   top: 0;
   width: 10%;
   z-index: 1;
+}
+
+.logo {
+  background-image: url('https://imgur.com/yGPevZt.jpeg');
+  background-position: center;
+  background-size: 99%;
+  background-repeat: no-repeat;
+  height: 17%;
 }
 
 .right-body {
