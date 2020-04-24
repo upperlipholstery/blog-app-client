@@ -23,10 +23,6 @@
   user should it be deemed inappropriate.
 
   ## Our Journey
-  Our journey began when we realized that we couldn't live without posting our
-  most trivial thoughts on the internet in a desperate attempt to catch any
-  attention we can whether it be positive or negative it's still sweet, sweet,
-  attention.
   We began by creating wireframes for the layout of our client side
   application and creating user Stories to brainstorm blog functionality. Once
   we established a solid idea of our functionality we implemented or auth routes.
