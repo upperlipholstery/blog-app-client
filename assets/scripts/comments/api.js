@@ -32,8 +32,20 @@ function updateComment (data, id) {
   })
 }
 
+function deleteComment (data, id) {
+  return $.ajax({
+    url: config.apiUrl + '/comments/' + id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
 module.exports = {
   createComment,
   showComment,
-  updateComment
+  updateComment,
+  deleteComment
 }
