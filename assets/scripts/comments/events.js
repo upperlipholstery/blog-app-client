@@ -18,6 +18,7 @@ function onCreateComment (event) {
 function onUpdateComment (event) {
   event.preventDefault()
   store.updateCommentId = $(event.target).data('id')
+  $('.main-comment-buttons').addClass('hidden')
   api.showComment(store.updateCommentId)
     .then(populateComment)
     .catch(ui.updateCommentsFailure)
@@ -34,18 +35,15 @@ function confirmUpdateComment (event) {
   console.log($(`.edit-comment-form[data-id=${store.updateCommentId}]`)[0])
   const data = getFormFields($(`.edit-comment-form[data-id=${store.updateCommentId}]`)[0])
   data.comment.postId = store.viewItemId
+
   api.updateComment(data, store.updateCommentId)
     .then(ui.confirmUpdateCommentSuccess)
     .catch(ui.updateCommentsFailure)
 }
 
-function cancelUpdateComment (event) {
-  event.preventDefault()
-  store.updateItemId = null
-}
-
 function onDeleteComment (event) {
   event.preventDefault()
+  $('.main-comment-buttons').addClass('hidden')
   store.deleteCommentId = $(event.target).data('id')
   console.log($(`.delete-check[data-id=${store.deleteCommentId}]`))
   $(`.delete-check[data-id=${store.deleteCommentId}]`).removeClass('hidden')
@@ -56,7 +54,8 @@ function confirmDeleteComment (event) {
   const data = { comment: {
     postId: store.viewItemId }
   }
-  console.log(data)
+  $('.main-comment-buttons').removeClass('hidden')
+  $(`.delete-check[data-id=${store.deleteCommentId}]`).addClass('hidden')
   api.deleteComment(data, store.deleteCommentId)
     .then(ui.confirmDeleteCommentSuccess)
     .catch(ui.deleteCommentsFailure)

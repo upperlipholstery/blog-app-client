@@ -18,17 +18,19 @@
           </div>
           {{#if comment.own}}
           <div class="comment-buttons">
-            <button data-id="{{comment._id}}" type="button" class="btn btn-success edit-comment">
-              Edit
-            </button>
-            <button data-id="{{comment._id}}" type="button" class="btn btn-danger delete-comment">
-              Delete
-            </button>
+            <div class="main-comment-buttons">
+              <button data-id="{{comment._id}}" type="button" class="btn btn-outline-success btn-sm edit-comment">
+                Edit
+              </button>
+              <button data-id="{{comment._id}}" type="button" class="btn btn-outline-danger btn-sm delete-comment">
+                Delete
+              </button>
+            </div>
             <div data-id="{{comment._id}}" class="delete-check hidden">
-              <button data-id="{{comment._id}}" type="button" class="btn btn-danger my-2 my-sm-0 confirm-comment-delete">
+              <button data-id="{{comment._id}}" type="button" class="btn btn-outline-danger btn-sm my-2 my-sm-0 confirm-comment-delete">
                 Confirm
               </button>
-              <button data-id="{{comment._id}}" type="button" class="btn btn-secondary my-2 my-sm-0 cancel-comment-delete">
+              <button data-id="{{comment._id}}" type="button" class="btn btn-outline-secondary btn-sm my-2 my-sm-0 cancel-comment-delete">
                 Cancel
               </button>
             </div>

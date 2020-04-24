@@ -42,7 +42,6 @@ $(() => {
   // Update comment actions
   $('#viewModalLong').on('click', '.edit-comment', commentEvents.onUpdateComment)
   $('#viewModalLong').on('click', '.confirm-comment-edit', commentEvents.confirmUpdateComment)
-  // $('#viewModalLong').on('click', '.cancel-comment-edit', commentEvents.cancelUpdateComment)
 
   // Delete comment actions
   $('#viewModalLong').on('click', '.delete-comment', commentEvents.onDeleteComment)
