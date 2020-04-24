@@ -41,6 +41,6 @@ $(() => {
 
   // Update comment actions
   $('#viewModalLong').on('click', '.edit-comment', commentEvents.onUpdateComment)
-  $('#viewModalLong').on('click', 'cancel-comment-edit', commentEvents.cancelUpdateComment)
   $('#viewModalLong').on('click', '.confirm-comment-edit', commentEvents.confirmUpdateComment)
+  $('#viewModalLong').on('click', '.cancel-comment-edit', commentEvents.cancelUpdateComment)
 })

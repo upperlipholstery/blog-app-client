@@ -21,7 +21,19 @@ function showComment (id) {
   })
 }
 
+function updateComment (data, id) {
+  return $.ajax({
+    url: config.apiUrl + '/comments/' + id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
 module.exports = {
   createComment,
-  showComment
+  showComment,
+  updateComment
 }

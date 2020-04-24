@@ -1,8 +1,7 @@
-{{log post}}
 <div class="modal-dialog modal-xl" role="document">
   <div class="modal-content">
     <div class="modal-header">
-        <h3 class="modal-title" id="view-title">{{post.title}}</h3>
+        <div class="modal-title" id="view-title"><h3>{{post.title}}<h3><h5>Written by: {{post.owner.email}} on {{post.createdAt}}</h5></div>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -22,12 +21,6 @@
             <button data-id="{{comment._id}}" type="button" class="btn btn-success my-2 my-sm-0 edit-comment">
               Edit
             </button>
-            <button data-id="{{comment._id}}" type="button" class="btn btn-success my-2 my-sm-0 confirm-comment-edit hidden">
-              Confirm
-            </button>
-            <button data-id="{{comment._id}}" type="button" class="btn btn-secondary my-2 my-sm-0 cancel-comment-edit hidden">
-              Cancel
-            </button>
             <button data-id="{{comment._id}}" type="button" class="btn btn-danger delete-comment">
                 Delete
               </button>
@@ -41,7 +34,7 @@
           </div>
           {{/if}}
           {{/each}}
-          <div id="create-comment-menu" class="container col-12 rounded border border-white">
+          <div id="create-comment-menu" class="container col-12">
             <form id="create-comment">
               <div class="form-group">
                 <textarea class="form-input form-control" name="comment[body]" placeholder="Body" rows="5"></textarea>
@@ -51,7 +44,6 @@
           </div>
         </div>
         <div class="modal-footer">
-          <div class="mr-auto"><h5>Written by: {{post.owner.email}} on {{post.createdAt}}</h5></div>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
     </div>
