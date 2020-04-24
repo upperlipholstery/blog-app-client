@@ -44,3 +44,33 @@
   *As a user I would like to have the ability to modify or remove any comments
   that I reate on a post.
   *As a user I would like to be able to Sign out of my account.
+
+  ## Wireframes
+
+  ### Blog non-user views
+
+  #### Basic view
+  ![Sign-up/in view](./images/BLOG_SIGN_UP_IN_VIEW.png)
+
+  #### Sign-up view
+  ![Sign-up view](./images/BLOG_SIGN_UP_VIEW.png)
+
+  #### Sign-in view
+  ![Sign-in view](./images/BLOG_SIGN_IN_VIEW.png)
+
+  ### Blog user views
+
+  #### User home view
+  ![Signed-in home view](./images/BLOG_SIGNED_IN_USER_VIEW.png)
+
+  #### My posts (user's personal posts) view
+  ![User posts view](./images/BLOG_MY_POSTS_VIEW.png)
+
+  #### Write post view
+  ![Write post view](./images/BLOG_WRITE_POSTS_VIEW.png)
+
+  #### Change password view
+  ![Change password view](./images/BLOG_CHANGE_PASSWORD_VIEW.png)
+
+  ### Blog Feed view
+  ![Blog feed view](./images/BLOG_FEED_VIEW.png)
