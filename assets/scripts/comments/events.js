@@ -44,8 +44,28 @@ function cancelUpdateComment (event) {
   store.updateItemId = null
 }
 
+function onDeleteComment (event) {
+  event.preventDefault()
+  store.deleteCommentId = $(event.target).data('id')
+  console.log($(`.delete-check[data-id=${store.deleteCommentId}]`))
+  $(`.delete-check[data-id=${store.deleteCommentId}]`).removeClass('hidden')
+  $(`.delete-comment[data-id=${store.deleteCommentId}]`).addClass('hidden')
+}
+
+function confirmDeleteComment (event) {
+  const data = { comment: {
+    postId: store.viewItemId }
+  }
+  console.log(data)
+  api.deleteComment(data, store.deleteCommentId)
+    .then(ui.confirmDeleteCommentSuccess)
+    .catch(ui.deleteCommentsFailure)
+}
+
 module.exports = {
   onCreateComment,
   onUpdateComment,
-  confirmUpdateComment
+  confirmUpdateComment,
+  confirmDeleteComment,
+  onDeleteComment
 }
