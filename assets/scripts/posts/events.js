@@ -5,8 +5,10 @@ const api = require('./api')
 const store = require('../store')
 const getFormFields = require('../../../lib/get-form-fields')
 const viewPostTemplate = require('../templates/view-body-template.handlebars')
+const viewPostTemplateNoInput = require('../templates/view-body-template-no-input.handlebars')
 
 function onViewPosts (event) {
+  console.log(store.user)
   event.preventDefault()
   api.viewPosts()
     .then(ui.viewPostsSuccess)
@@ -30,8 +32,8 @@ function selectView (event) {
 
 function viewSinglePostSuccess (data) {
   const a = new Date(data.post[0].createdAt)
-  data.post.createdAt = a.toDateString()
-  data.post.createdTime = a.toTimeString()
+  data.post[0].createdAt = a.toDateString()
+  data.post[0].createdTime = a.toTimeString()
   if (store.user) {
     data.post[0].comments.forEach(x => {
       if (x.owner === store.user._id) {
@@ -41,7 +43,7 @@ function viewSinglePostSuccess (data) {
       }
     })
   }
-  const viewPostHtml = viewPostTemplate({post: data.post[0]})
+  const viewPostHtml = store.user !== undefined ? viewPostTemplate({post: data.post[0]}) : viewPostTemplateNoInput({post: data.post[0]})
   $('#viewModalLong').html(viewPostHtml)
 }
 
@@ -53,7 +55,6 @@ function cancelUpdatePost (event) {
 function selectUpdatePost (event) {
   event.preventDefault()
   store.updatePostId = $(event.target).data('id')
-  console.log(store.updatePostId)
   api.showPost(store.updatePostId)
     .then(ui.selectUpdatePostsSuccess)
     .catch(ui.updatePostsFailure)
@@ -61,7 +62,6 @@ function selectUpdatePost (event) {
 
 function onUpdatePost (event) {
   event.preventDefault()
-  console.log($('#edit-post')[0])
   const updateData = getFormFields($('#edit-post')[0])
   api.updatePost(updateData, store.updatePostId)
     .then(ui.updatePostsSuccess)
