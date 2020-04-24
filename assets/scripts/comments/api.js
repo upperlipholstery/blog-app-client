@@ -14,6 +14,14 @@ function createComment (data) {
   })
 }
 
+function showComment (id) {
+  return $.ajax({
+    url: config.apiUrl + '/comments/' + id,
+    method: 'GET'
+  })
+}
+
 module.exports = {
-  createComment
+  createComment,
+  showComment
 }

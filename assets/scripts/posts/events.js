@@ -29,6 +29,9 @@ function selectView (event) {
 }
 
 function viewSinglePostSuccess (data) {
+  console.log('viewSinglePostSuccess')
+  console.log(data)
+  console.log('viewSinglePostSuccess')
   const a = new Date(data.post.createdAt)
   data.post.createdAt = a.toDateString()
   data.post.createdTime = a.toTimeString()
@@ -41,7 +44,10 @@ function viewSinglePostSuccess (data) {
       }
     })
   }
-  const viewPostHtml = viewPostTemplate({post: data.post})
+  console.log('viewSinglePostSuccess2')
+  console.log(data)
+  console.log('viewSinglePostSuccess2')
+  const viewPostHtml = viewPostTemplate({post: data.post[0]})
   $('#viewModalLong').html(viewPostHtml)
 }
 

@@ -40,7 +40,7 @@ $(() => {
   $('#viewModalLong').on('submit', '#create-comment', commentEvents.onCreateComment)
 
   // Update comment actions
-  $('#editModalLong').on('click', '.update-button', commentEvents.onUpdateComment)
-  $('.cancel-update').on('click', commentEvents.cancelUpdatePost)
-  $('.content').on('click', '.update-modal', commentEvents.selectUpdateComment)
+  $('#viewModalLong').on('click', '.edit-comment', commentEvents.onUpdateComment)
+  $('#viewModalLong').on('click', 'cancel-comment-edit', commentEvents.cancelUpdateComment)
+  $('#viewModalLong').on('click', '.confirm-comment-edit', commentEvents.confirmUpdateComment)
 })
