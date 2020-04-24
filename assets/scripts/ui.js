@@ -5,6 +5,7 @@ const showPostsTemplate = require('./templates/blog-post.handlebars')
 const showUserPostsTemplate = require('./templates/owner-blog-posts.handlebars')
 const populateUpdateTemplate = require('./templates/populate-update-template.handlebars')
 const postApi = require('./posts/api')
+const api = require('./auth/api')
 
 // POSTS CRUD
 
@@ -42,10 +43,8 @@ function deletePostsSuccess () {
 }
 
 function selectUpdatePostsSuccess (data) {
-  console.log(data)
   console.log('selectUpdatePostsSuccess')
-  const populateUpdateHtml = populateUpdateTemplate({post: data.post})
-  console.log(populateUpdateHtml)
+  const populateUpdateHtml = populateUpdateTemplate({post: data.post[0]})
   $('#editModalLong').html(populateUpdateHtml)
 }
 
@@ -69,15 +68,14 @@ function createPostSuccess () {
 
 function signUpSuccess (data) {
   store.user = data.user
+  api.signUp(data)
+    .then(signInSuccess)
+    .catch(signInFailure)
   console.log('signUp working')
 }
 
 function signInSuccess (data) {
   store.user = data.user
-  // api.viewPosts()
-  //   .then(viewPostsSuccess)
-  //   .catch(viewPostsFailure)
-  console.log('sign in working')
   $('#regsidebar').removeClass('hidden')
   $('#unregsidebar').addClass('hidden')
 }
@@ -86,7 +84,15 @@ function signOutSuccess () {
   console.log('sign out is working')
   $('#unregsidebar').removeClass('hidden')
   $('#regsidebar').addClass('hidden')
+  $('#create-comment-menu').addClass('hidden')
+  $('#create-post-menu').addClass('hidden')
   $('#content').html('')
+  store.user = undefined
+}
+
+function showWritePost () {
+  $('#post-content').addClass('hidden')
+  $('#create-post-menu').removeClass('hidden')
 }
 
 // FAILURES
@@ -125,11 +131,6 @@ function changePasswordSuccess () {
 
 function changePasswordFailure () {
   console.log('change password failed')
-}
-
-function showWritePost () {
-  $('#post-content').addClass('hidden')
-  $('#create-post-menu').removeClass('hidden')
 }
 
 module.exports = {
