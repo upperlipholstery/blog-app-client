@@ -4,7 +4,7 @@
       <div class="card-body">
         <h3>{{post.title}}</h3>
         <p>Wtritten by: {{post.owner.email}}</p>
-        <p>{{post.createdAt}}</p>
+        <p>{{post.createdAt}} {{post.createdTime}}</p>
         <p>commments: {{length post.comments}}</p>
         <button data-id="{{post._id}}" type="button" class="btn btn-outline-light my-2 my-sm-0 view-modal" data-toggle="modal" data-target="#viewModalLong">
           Read

@@ -1,6 +1,6 @@
 'use strict'
 
-const ui = require('../ui')
+const ui = require('./ui')
 const api = require('./api')
 const store = require('../store')
 const getFormFields = require('../../../lib/get-form-fields')
@@ -43,9 +43,8 @@ function confirmUpdateComment (event) {
 
 function onDeleteComment (event) {
   event.preventDefault()
-  $('.main-comment-buttons').addClass('hidden')
   store.deleteCommentId = $(event.target).data('id')
-  console.log($(`.delete-check[data-id=${store.deleteCommentId}]`))
+  $('.main-comment-buttons').addClass('hidden')
   $(`.delete-check[data-id=${store.deleteCommentId}]`).removeClass('hidden')
   $(`.delete-comment[data-id=${store.deleteCommentId}]`).addClass('hidden')
 }
@@ -55,7 +54,6 @@ function confirmDeleteComment (event) {
     postId: store.viewItemId }
   }
   $('.main-comment-buttons').removeClass('hidden')
-  $(`.delete-check[data-id=${store.deleteCommentId}]`).addClass('hidden')
   api.deleteComment(data, store.deleteCommentId)
     .then(ui.confirmDeleteCommentSuccess)
     .catch(ui.deleteCommentsFailure)
