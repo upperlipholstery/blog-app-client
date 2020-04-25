@@ -1,7 +1,7 @@
 'use strict'
 
-const store = require('./store')
-const api = require('./auth/api')
+const store = require('../store')
+// const api = require('./api')
 
 function signUpSuccess (data) {
   console.log(data)
