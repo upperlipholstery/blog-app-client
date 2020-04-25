@@ -3,15 +3,15 @@
     <div class="card border-dark" style="width: 15rem;">
       <div class="card-body">
         <h3>{{post.title}}</h3>
-        <p>{{post.createdAt}}</p>
+        <p>{{post.createdAt}} {{post.createdTime}}</p>
         <p>commments: {{length post.comments}}</p>
         <button data-id="{{post._id}}" type="button" class="btn btn-outline-light my-2 my-sm-0 view-modal" data-toggle="modal" data-target="#viewModalLong">
           Read
         </button>
-        <button data-id="{{post._id}}" type="button" class="btn btn-outline-success my-2 my-sm-0 update-modal" data-toggle="modal" data-target="#editModalLong">
+        <button data-id="{{post._id}}" type="button" class="btn btn-success my-2 my-sm-0 update-modal" data-toggle="modal" data-target="#editModalLong">
           Edit
         </button>
-        <button data-id="{{post._id}}" type="button" class="btn btn-outline-danger delete-modal" data-toggle="modal" data-target="#deleteModal">
+        <button data-id="{{post._id}}" type="button" class="btn btn-danger delete-modal" data-toggle="modal" data-target="#deleteModal">
           Delete
         </button>
       </div>

@@ -46,5 +46,5 @@ $(() => {
   // Delete comment actions
   $('#viewModalLong').on('click', '.delete-comment', commentEvents.onDeleteComment)
   $('#viewModalLong').on('click', '.confirm-comment-delete', commentEvents.confirmDeleteComment)
-  // $('#viewModalLong').on('click', '.cancel-comment-delete', commentEvents.cancelDeleteComment)
+  $('#viewModalLong').on('click', '.cancel-comment-delete', ui.cancelDeleteComment)
 })

@@ -43,9 +43,8 @@ function confirmUpdateComment (event) {
 
 function onDeleteComment (event) {
   event.preventDefault()
-  $('.main-comment-buttons').addClass('hidden')
   store.deleteCommentId = $(event.target).data('id')
-  console.log($(`.delete-check[data-id=${store.deleteCommentId}]`))
+  $('.main-comment-buttons').addClass('hidden')
   $(`.delete-check[data-id=${store.deleteCommentId}]`).removeClass('hidden')
   $(`.delete-comment[data-id=${store.deleteCommentId}]`).addClass('hidden')
 }

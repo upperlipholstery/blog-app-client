@@ -64,13 +64,20 @@ function createPostSuccess () {
   $('.message').text('Post created')
 }
 
+function cancelDeleteComment () {
+  $(`.main-comment-buttons`).removeClass('hidden')
+  $(`.delete-check[data-id=${store.deleteCommentId}]`).addClass('hidden')
+  $(`.delete-comment[data-id=${store.deleteCommentId}]`).removeClass('hidden')
+}
+
 // AUTHENTICATION
 
 function signUpSuccess (data) {
+  console.log(data)
   store.user = data.user
-  api.signUp(data)
-    .then(signInSuccess)
-    .catch(signInFailure)
+  // api.signIn(data)
+  //   .then(signInSuccess)
+  //   .catch(signInFailure)
   console.log('signUp working')
 }
 
@@ -151,5 +158,6 @@ module.exports = {
   deletePostsSuccess,
   deletePostsFailure,
   updatePostsSuccess,
-  selectUpdatePostsSuccess
+  selectUpdatePostsSuccess,
+  cancelDeleteComment
 }
