@@ -2,6 +2,7 @@
 
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example')
+
 const tomeEvents = require('./tomes/events')
 const noteEvents = require('./notes/events')
 const authEvents = require('./auth/events')
@@ -18,6 +19,7 @@ $(() => {
   $('#sign-out-btn').on('click', authEvents.onSignOut)
 
   // VIEW EVENTS
+
   $('#view-tomes-btn').on('click', tomeEvents.onViewTomes)
   $('#view-tomes-btn-2').on('click', tomeEvents.onViewTomes)
   $('#view-user-tomes-btn').on('click', tomeEvents.onUserViewTomes)
@@ -49,4 +51,5 @@ $(() => {
   $('#viewModalLong').on('click', '.delete-note', noteEvents.onDeleteNote)
   $('#viewModalLong').on('click', '.confirm-note-delete', noteEvents.confirmDeleteNote)
   $('#viewModalLong').on('click', '.cancel-note-delete', noteUi.cancelDeleteNote)
+
 })
