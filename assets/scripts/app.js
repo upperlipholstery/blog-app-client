@@ -5,6 +5,7 @@
 const postEvents = require('./posts/events')
 const commentEvents = require('./comments/events')
 const authEvents = require('./auth/events')
+const commentUi = require('./comments/ui')
 const ui = require('./ui')
 // use require without a reference to ensure a file is bundled
 // require('./example')
@@ -28,7 +29,7 @@ $(() => {
   $('.content').on('click', '.update-modal', postEvents.selectUpdatePost)
 
   // Delete post actions
-  $('.delete-button').on('click', postEvents.onDeletePost)
+  $('.delete-post-button').on('click', postEvents.onDeletePost)
   $('.cancel-delete').on('click', postEvents.cancelDeletePost)
   $('.content').on('click', '.delete-modal', postEvents.selectDeletePost)
 
@@ -42,9 +43,10 @@ $(() => {
   // Update comment actions
   $('#viewModalLong').on('click', '.edit-comment', commentEvents.onUpdateComment)
   $('#viewModalLong').on('click', '.confirm-comment-edit', commentEvents.confirmUpdateComment)
+  $('#viewModalLong').on('click', '.cancel-comment-edit', commentUi.cancelUpdateComment)
 
   // Delete comment actions
   $('#viewModalLong').on('click', '.delete-comment', commentEvents.onDeleteComment)
   $('#viewModalLong').on('click', '.confirm-comment-delete', commentEvents.confirmDeleteComment)
-  // $('#viewModalLong').on('click', '.cancel-comment-delete', ui.cancelDeleteComment)
+  $('#viewModalLong').on('click', '.cancel-comment-delete', commentUi.cancelDeleteComment)
 })

@@ -8,35 +8,36 @@
       </div>
       <div class="modal-body" id="view-body">
         <p class="written-text">{{post.body}}</p><br>
-        {{#each post.comments as |comment|}}
         <div class="fancy-break"></div>
-        <div class="single-comment">
-          <div>
-            <h5>~ {{comment.ownerName}} ~</h5>
-          </div>
-          <div class="comment-body" data-id="{{comment._id}}">
-            <p class="written-text">{{comment.body}}</p>
-          </div>
-          {{#if comment.own}}
-          <div class="comment-buttons">
-            <div class="main-comment-buttons">
-              <button data-id="{{comment._id}}" type="button" class="btn btn-outline-success btn-sm edit-comment">
-                Edit
-              </button>
-              <button data-id="{{comment._id}}" type="button" class="btn btn-outline-danger btn-sm delete-comment">
-                Delete
-              </button>
+        {{#each post.comments as |comment|}}
+          <div class="single-comment">
+            <div>
+              <h5>~ {{comment.ownerName}} ~</h5>
             </div>
-            <div data-id="{{comment._id}}" class="delete-check hidden">
-              <button data-id="{{comment._id}}" type="button" class="btn btn-outline-danger btn-sm my-2 my-sm-0 confirm-comment-delete">
-                Confirm
-              </button>
-              <button data-id="{{comment._id}}" type="button" class="btn btn-outline-secondary btn-sm my-2 my-sm-0 cancel-comment-delete">
-                Cancel
-              </button>
+            <div class="comment-body" data-id="{{comment._id}}">
+              <p class="written-text">{{comment.body}}</p>
+            </div>
+            {{#if comment.own}}
+            <div class="comment-buttons">
+              <div class="main-comment-buttons">
+                <button data-id="{{comment._id}}" type="button" class="btn btn-outline-success btn-sm edit-comment">
+                  Edit
+                </button>
+                <button data-id="{{comment._id}}" type="button" class="btn btn-outline-danger btn-sm delete-comment">
+                  Delete
+                </button>
+              </div>
+              <div data-id="{{comment._id}}" class="delete-check hidden">
+                <button data-id="{{comment._id}}" type="button" class="btn btn-outline-danger btn-sm my-2 my-sm-0 confirm-comment-delete">
+                  Confirm
+                </button>
+                <button data-id="{{comment._id}}" type="button" class="btn btn-outline-secondary btn-sm my-2 my-sm-0 cancel-comment-delete">
+                  Cancel
+                </button>
+              </div>
             </div>
           </div>
-          </div>
+          <div class="fancy-break"></div>
           {{/if}}
           {{/each}}
           <div id="create-comment-menu" class="container col-12">

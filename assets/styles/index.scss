@@ -29,8 +29,6 @@ input {
   background-size: cover;
   margin-top: 45px;
   padding: 20px;
-  // padding-bottom: 10px;
-  // padding-top: 20px;
 }
 
 .single-comment {
@@ -50,11 +48,11 @@ input {
 }
 
 ::placeholder {
-  color: grey;
+  color: #2e2e2d;
 }
 
 .form-control::-webkit-input-placeholder {
-  color: grey;
+  color: #2e2e2d;
 }
 
 .paper-input {
@@ -75,7 +73,13 @@ input {
   background-image: url('https://imgur.com/rL9Npsw.png');
   background-position: center;
   background-size: cover;
-  color: #fff;
+}
+
+.cover-text {
+  background: -webkit-linear-gradient(top, #8f6B29, #FDE08D, #DF9F28);
+  margin-left: 10px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hidden {

@@ -2,10 +2,10 @@
   <section data-id="{{post._id}}" class="post-item">
     <div class="card border-dark" style="width: 15rem;">
       <div class="card-body">
-        <h3>{{post.title}}</h3>
-        <p>{{post.createdAt}} {{post.createdTime}}</p>
-        <p>commments: {{length post.comments}}</p>
-        <button data-id="{{post._id}}" type="button" class="btn btn-outline-light my-2 my-sm-0 view-modal" data-toggle="modal" data-target="#viewModalLong">
+        <h3 class="cover-text">{{limit post.title 20}}</h3>
+        <p class="cover-text">{{post.createdAt}} {{post.createdTime}}</p>
+        <p class="cover-text">commments: {{length post.comments}}</p>
+        <button data-id="{{post._id}}" type="button" class="btn btn-outline-warning my-2 my-sm-0 view-modal cover-text" data-toggle="modal" data-target="#viewModalLong">
           Read
         </button>
         <button data-id="{{post._id}}" type="button" class="btn btn-success my-2 my-sm-0 update-modal" data-toggle="modal" data-target="#editModalLong">

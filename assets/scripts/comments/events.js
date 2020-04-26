@@ -11,7 +11,7 @@ function onCreateComment (event) {
   const data = getFormFields(event.target)
   data.comment.postId = store.viewItemId
   api.createComment(data)
-    .then(data => console.log(data))
+    .then(ui.createCommentSuccess)
     .catch(ui.createCommentFailure)
 }
 
@@ -31,8 +31,6 @@ function populateComment (data) {
 
 function confirmUpdateComment (event) {
   event.preventDefault()
-  console.log(store.updateCommentId)
-  console.log($(`.edit-comment-form[data-id=${store.updateCommentId}]`)[0])
   const data = getFormFields($(`.edit-comment-form[data-id=${store.updateCommentId}]`)[0])
   data.comment.postId = store.viewItemId
 

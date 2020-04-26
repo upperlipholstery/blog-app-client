@@ -8,16 +8,17 @@
       </div>
       <div class="modal-body" id="view-body">
         <p class="written-text">{{post.body}}</p><br>
-        {{#each post.comments as |comment|}}
         <div class="fancy-break"></div>
+        {{#each post.comments as |comment|}}
         <div class="single-comment">
           <div>
-            <h5>{{comment.ownerName}} ~~~ </h5>
+            <h5>~ {{comment.ownerName}} ~</h5>
           </div>
           <div class="comment-body" data-id="{{comment._id}}">
             <p class="written-text">{{comment.body}}</p><br>
           </div>
         </div>
+        <div class="fancy-break"></div>
         {{/each}}
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
