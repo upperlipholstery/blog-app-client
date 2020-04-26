@@ -3,10 +3,12 @@
 const showPostsTemplate = require('../templates/blog-post.handlebars')
 const showUserPostsTemplate = require('../templates/owner-blog-posts.handlebars')
 const populateUpdateTemplate = require('../templates/populate-update-template.handlebars')
+const viewPostTemplate = require('../templates/view-body-template.handlebars')
+const viewPostTemplateNoInput = require('../templates/view-body-template-no-input.handlebars')
 const api = require('./api')
+const store = require('../store')
 
 function viewPostsSuccess (data) {
-  console.log('viewPostsSuccess')
   data.posts = data.posts.sort(function (a, b) {
     a = new Date(a.createdAt)
     b = new Date(b.createdAt)
@@ -32,15 +34,30 @@ function viewUserPostsSuccess (data) {
   $('#create-post-menu').addClass('hidden')
 }
 
+function viewSinglePostSuccess (data) {
+  const a = new Date(data.post[0].createdAt)
+  data.post[0].createdAt = a.toDateString()
+  data.post[0].createdTime = a.toTimeString()
+  if (store.user) {
+    data.post[0].comments.forEach(x => {
+      if (x.owner === store.user._id) {
+        x.own = true
+      } else {
+        x.own = false
+      }
+    })
+  }
+  const viewPostHtml = store.user !== undefined ? viewPostTemplate({post: data.post[0]}) : viewPostTemplateNoInput({post: data.post[0]})
+  $('#viewModalLong').html(viewPostHtml)
+}
+
 function deletePostsSuccess () {
-  console.log('delete Posts success')
   api.viewPosts()
     .then(refreshListSuccess)
     .catch(refreshListFailure)
 }
 
 function selectUpdatePostsSuccess (data) {
-  console.log('selectUpdatePostsSuccess')
   const populateUpdateHtml = populateUpdateTemplate({post: data.post[0]})
   $('#editModalLong').html(populateUpdateHtml)
 }
@@ -52,13 +69,19 @@ function updatePostsSuccess () {
 }
 
 function refreshListSuccess (data) {
+  data.posts = data.posts.sort(function (a, b) {
+    a = new Date(a.createdAt)
+    b = new Date(b.createdAt)
+    return a > b ? -1 : a < b ? 1 : 0
+  })
+  data.posts.forEach(x => { x.createdAt = (new Date(x.createdAt).toDateString()) })
   const showUserPostsHtml = showUserPostsTemplate({posts: data.posts})
   $('.content').html(showUserPostsHtml)
 }
 
 function createPostSuccess () {
-  console.log('create post success')
   $('.message').text('Post created')
+  $('#create-post')[0].reset('')
 }
 
 function deletePostsFailure () {
@@ -86,5 +109,6 @@ module.exports = {
   deletePostsSuccess,
   deletePostsFailure,
   updatePostsSuccess,
-  selectUpdatePostsSuccess
+  selectUpdatePostsSuccess,
+  viewSinglePostSuccess
 }
