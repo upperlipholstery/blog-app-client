@@ -1,21 +1,21 @@
 <div class="modal-dialog modal-xl" role="document">
   <div class="modal-content">
     <div class="modal-header">
-      <div class="modal-title" id="view-title"><h3>{{post.title}}<h3><h5>Written by: {{post.owner.email}} on {{post.createdAt}}</h5></div>
+      <div class="modal-title" id="view-title"><h3>{{tome.title}}<h3><h5>Written by: {{tome.owner.email}} on {{tome.createdAt}}</h5></div>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body" id="view-body">
-        <p class="written-text">{{post.body}}</p><br>
+        <p class="written-text">{{tome.body}}</p><br>
         <div class="fancy-break"></div>
-        {{#each post.comments as |comment|}}
-        <div class="single-comment">
+        {{#each tome.notes as |note|}}
+        <div class="single-note">
           <div>
-            <h5>~ {{comment.ownerName}} ~</h5>
+            <h5>~ {{note.ownerName}} ~</h5>
           </div>
-          <div class="comment-body" data-id="{{comment._id}}">
-            <p class="written-text">{{comment.body}}</p><br>
+          <div class="note-body" data-id="{{note._id}}">
+            <p class="written-text">{{note.body}}</p><br>
           </div>
         </div>
         <div class="fancy-break"></div>

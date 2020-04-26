@@ -1,49 +1,49 @@
 <div class="modal-dialog modal-xl" role="document">
   <div class="modal-content">
     <div class="modal-header">
-      <div class="modal-title" id="view-title"><h3>{{post.title}}<h3><h5>Written by: {{post.owner.email}} on {{post.createdAt}}</h5></div>
+      <div class="modal-title" id="view-title"><h3>{{tome.title}}<h3><h5>Written by: {{tome.owner.email}} on {{tome.createdAt}}</h5></div>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body" id="view-body">
-        <p class="written-text">{{post.body}}</p><br>
+        <p class="written-text">{{tome.body}}</p><br>
         <div class="fancy-break"></div>
-        {{#each post.comments as |comment|}}
-          <div class="single-comment">
+        {{#each tome.notes as |note|}}
+          <div class="single-note">
             <div>
-              <h5>~ {{comment.ownerName}} ~</h5>
+              <h5>~ {{note.ownerName}} ~</h5>
             </div>
-            <div class="comment-body" data-id="{{comment._id}}">
-              <p class="written-text">{{comment.body}}</p>
+            <div class="note-body" data-id="{{note._id}}">
+              <p class="written-text">{{note.body}}</p>
             </div>
-            {{#if comment.own}}
-            <div class="comment-buttons">
-              <div class="main-comment-buttons">
-                <button data-id="{{comment._id}}" type="button" class="btn btn-outline-success btn-sm edit-comment">
+            {{#if note.own}}
+            <div class="note-buttons">
+              <div class="main-note-buttons">
+                <button data-id="{{note._id}}" type="button" class="btn btn-outline-success btn-sm edit-note">
                   Edit
                 </button>
-                <button data-id="{{comment._id}}" type="button" class="btn btn-outline-danger btn-sm delete-comment">
+                <button data-id="{{note._id}}" type="button" class="btn btn-outline-danger btn-sm delete-note">
                   Delete
                 </button>
               </div>
-              <div data-id="{{comment._id}}" class="delete-check hidden">
-                <button data-id="{{comment._id}}" type="button" class="btn btn-outline-danger btn-sm my-2 my-sm-0 confirm-comment-delete">
+              <div data-id="{{note._id}}" class="delete-check hidden">
+                <button data-id="{{note._id}}" type="button" class="btn btn-outline-danger btn-sm my-2 my-sm-0 confirm-note-delete">
                   Confirm
                 </button>
-                <button data-id="{{comment._id}}" type="button" class="btn btn-outline-secondary btn-sm my-2 my-sm-0 cancel-comment-delete">
+                <button data-id="{{note._id}}" type="button" class="btn btn-outline-secondary btn-sm my-2 my-sm-0 cancel-note-delete">
                   Cancel
                 </button>
               </div>
             </div>
-          </div>
-          <div class="fancy-break"></div>
           {{/if}}
+        </div>
+          <div class="fancy-break"></div>
           {{/each}}
-          <div id="create-comment-menu" class="container col-12">
-            <form id="create-comment">
+          <div id="create-note-menu" class="container col-12">
+            <form id="create-note">
               <div class="form-group">
-                <textarea class="form-input form-control paper-input" name="comment[body]" placeholder="Body" rows="5"></textarea>
+                <textarea class="form-input form-control paper-input" name="note[body]" placeholder="Body" rows="5"></textarea>
               </div>
               <input type="submit" value="Submit" class="btn btn-outline-dark my-2 my-sm-0">
             </form>

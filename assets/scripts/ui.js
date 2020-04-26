@@ -1,10 +1,10 @@
 'use strict'
 
-function showWritePost () {
-  $('#post-content').addClass('hidden')
-  $('#create-post-menu').removeClass('hidden')
+function showWriteTome () {
+  $('#tome-content').addClass('hidden')
+  $('#create-tome-menu').removeClass('hidden')
 }
 
 module.exports = {
-  showWritePost
+  showWriteTome
 }
