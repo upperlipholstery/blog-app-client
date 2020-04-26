@@ -3,9 +3,9 @@
 const store = require('../store')
 const config = require('../config')
 
-function createComment (data) {
+function createNote (data) {
   return $.ajax({
-    url: config.apiUrl + '/comments',
+    url: config.apiUrl + '/notes',
     method: 'POST',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -14,16 +14,16 @@ function createComment (data) {
   })
 }
 
-function showComment (id) {
+function showNote (id) {
   return $.ajax({
-    url: config.apiUrl + '/comments/' + id,
+    url: config.apiUrl + '/notes/' + id,
     method: 'GET'
   })
 }
 
-function updateComment (data, id) {
+function updateNote (data, id) {
   return $.ajax({
-    url: config.apiUrl + '/comments/' + id,
+    url: config.apiUrl + '/notes/' + id,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -32,9 +32,9 @@ function updateComment (data, id) {
   })
 }
 
-function deleteComment (data, id) {
+function deleteNote (data, id) {
   return $.ajax({
-    url: config.apiUrl + '/comments/' + id,
+    url: config.apiUrl + '/notes/' + id,
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -44,8 +44,8 @@ function deleteComment (data, id) {
 }
 
 module.exports = {
-  createComment,
-  showComment,
-  updateComment,
-  deleteComment
+  createNote,
+  showNote,
+  updateNote,
+  deleteNote
 }

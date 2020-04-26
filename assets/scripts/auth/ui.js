@@ -4,7 +4,6 @@ const store = require('../store')
 // const api = require('./api')
 
 function signUpSuccess (data) {
-  console.log(data)
   store.user = data.user
   // api.signIn(data)
   //   .then(signInSuccess)
@@ -26,8 +25,8 @@ function signOutSuccess () {
   console.log('sign out is working')
   $('#unregsidebar').removeClass('hidden')
   $('#regsidebar').addClass('hidden')
-  $('#create-comment-menu').addClass('hidden')
-  $('#create-post-menu').addClass('hidden')
+  $('#create-note-menu').addClass('hidden')
+  $('#create-tome-menu').addClass('hidden')
   $('form input[type="text"]').val('')
   $('form input[type="password"]').val('')
   $('#content').html('')

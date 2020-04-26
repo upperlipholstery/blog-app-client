@@ -2,10 +2,10 @@
 
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example')
-const postEvents = require('./posts/events')
-const commentEvents = require('./comments/events')
+const tomeEvents = require('./tomes/events')
+const noteEvents = require('./notes/events')
 const authEvents = require('./auth/events')
-const commentUi = require('./comments/ui')
+const noteUi = require('./notes/ui')
 const ui = require('./ui')
 // use require without a reference to ensure a file is bundled
 // require('./example')
@@ -18,35 +18,35 @@ $(() => {
   $('#sign-out-btn').on('click', authEvents.onSignOut)
 
   // VIEW EVENTS
-  $('#view-posts-btn').on('click', postEvents.onViewPosts)
-  $('#view-posts-btn-2').on('click', postEvents.onViewPosts)
-  $('#view-user-posts-btn').on('click', postEvents.onUserViewPosts)
-  $('.content').on('click', '.view-modal', postEvents.selectView)
+  $('#view-tomes-btn').on('click', tomeEvents.onViewTomes)
+  $('#view-tomes-btn-2').on('click', tomeEvents.onViewTomes)
+  $('#view-user-tomes-btn').on('click', tomeEvents.onUserViewTomes)
+  $('.content').on('click', '.view-modal', tomeEvents.selectView)
 
-  // Update post actions
-  $('#editModalLong').on('click', '.update-button', postEvents.onUpdatePost)
-  $('.cancel-update').on('click', postEvents.cancelUpdatePost)
-  $('.content').on('click', '.update-modal', postEvents.selectUpdatePost)
+  // Update tome actions
+  $('#editModalLong').on('click', '.update-button', tomeEvents.onUpdateTome)
+  $('.cancel-update').on('click', tomeEvents.cancelUpdateTome)
+  $('.content').on('click', '.update-modal', tomeEvents.selectUpdateTome)
 
-  // Delete post actions
-  $('.delete-post-button').on('click', postEvents.onDeletePost)
-  $('.cancel-delete').on('click', postEvents.cancelDeletePost)
-  $('.content').on('click', '.delete-modal', postEvents.selectDeletePost)
+  // Delete tome actions
+  $('.delete-tome-button').on('click', tomeEvents.onDeleteTome)
+  $('.cancel-delete').on('click', tomeEvents.cancelDeleteTome)
+  $('.content').on('click', '.delete-modal', tomeEvents.selectDeleteTome)
 
-  // create post action
-  $('#create-post').on('submit', postEvents.onCreatePost)
-  $('#create-post-btn').on('click', ui.showWritePost)
+  // create tome action
+  $('#create-tome').on('submit', tomeEvents.onCreateTome)
+  $('#create-tome-btn').on('click', ui.showWriteTome)
 
-  // Create comment
-  $('#viewModalLong').on('submit', '#create-comment', commentEvents.onCreateComment)
+  // Create note
+  $('#viewModalLong').on('submit', '#create-note', noteEvents.onCreateNote)
 
-  // Update comment actions
-  $('#viewModalLong').on('click', '.edit-comment', commentEvents.onUpdateComment)
-  $('#viewModalLong').on('click', '.confirm-comment-edit', commentEvents.confirmUpdateComment)
-  $('#viewModalLong').on('click', '.cancel-comment-edit', commentUi.cancelUpdateComment)
+  // Update note actions
+  $('#viewModalLong').on('click', '.edit-note', noteEvents.onUpdateNote)
+  $('#viewModalLong').on('click', '.confirm-note-edit', noteEvents.confirmUpdateNote)
+  $('#viewModalLong').on('click', '.cancel-note-edit', noteUi.cancelUpdateNote)
 
-  // Delete comment actions
-  $('#viewModalLong').on('click', '.delete-comment', commentEvents.onDeleteComment)
-  $('#viewModalLong').on('click', '.confirm-comment-delete', commentEvents.confirmDeleteComment)
-  $('#viewModalLong').on('click', '.cancel-comment-delete', commentUi.cancelDeleteComment)
+  // Delete note actions
+  $('#viewModalLong').on('click', '.delete-note', noteEvents.onDeleteNote)
+  $('#viewModalLong').on('click', '.confirm-note-delete', noteEvents.confirmDeleteNote)
+  $('#viewModalLong').on('click', '.cancel-note-delete', noteUi.cancelDeleteNote)
 })
