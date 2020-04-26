@@ -1,6 +1,7 @@
 @import '~bootstrap/scss/bootstrap';
 
 html, body {
+  font-family: 'Girassol', cursive;
   height: 100%;
   margin: 0;
 }
@@ -10,8 +11,56 @@ body {
   background-position: center;
 }
 
-#create-post-menu {
+h3 {
+  font-family: 'Cinzel', serif;
+}
+
+textarea {
+  color: black;
+}
+
+input {
+  color: black;
+}
+
+#create-tome-menu {
+  background-image: url('https://imgur.com/1wFd5FS.png');
+  background-position: center;
+  background-size: cover;
   margin-top: 45px;
+  padding: 20px;
+}
+
+.single-note {
+  margin: 0 18px;
+}
+
+.fancy-break {
+  background-image: url('https://imgur.com/k9GYs4N.png');
+  background-repeat: no-repeat;
+  background-size: 98%;
+  background-position: center;
+  height: 40px;
+}
+
+.written-text {
+  font-family: 'Spectral', serif;
+  white-space: pre-line;
+}
+
+::placeholder {
+  color: #2e2e2d;
+}
+
+.form-control::-webkit-input-placeholder {
+  color: #2e2e2d;
+}
+
+.paper-input {
+  background-image: url('https://imgur.com/1wFd5FS.png');
+  background-position: center;
+  background-size: cover;
+  filter: brightness(90%);
 }
 
 .modal-content {
@@ -25,7 +74,13 @@ body {
   background-image: url('https://imgur.com/rL9Npsw.png');
   background-position: center;
   background-size: cover;
-  color: #fff;
+}
+
+.cover-text {
+  background: -webkit-linear-gradient(top, #8f6B29, #FDE08D, #DF9F28);
+  margin-left: 10px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hidden {
@@ -67,7 +122,8 @@ body {
   margin: 10px;
 }
 
-.post-item {
+
+.tome-item {
   margin: 15px;
 }
 
