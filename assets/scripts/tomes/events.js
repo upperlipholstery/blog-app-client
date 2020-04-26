@@ -42,7 +42,7 @@ function selectUpdateTome (event) {
 
 function onUpdateTome (event) {
   event.preventDefault()
-  const updateData = getFormFields($('#edit-Tome')[0])
+  const updateData = getFormFields($('#edit-tome')[0])
   api.updateTome(updateData, store.updateTomeId)
     .then(ui.updateTomesSuccess)
     .catch(ui.updateTomesFailure)
