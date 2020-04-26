@@ -63,7 +63,7 @@ function selectUpdateTomesSuccess (data) {
 }
 
 function updateTomesSuccess () {
-  api.getUserTomes()
+  api.getUserTomes(store.user._id)
     .then(refreshListSuccess)
     .catch(refreshListFailure)
 }
