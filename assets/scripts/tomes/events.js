@@ -12,6 +12,13 @@ function onViewTomes (event) {
     .catch(ui.viewTomesFailure)
 }
 
+function onFavoriteTomes (event) {
+  event.preventDefault()
+  api.favoriteTomes()
+  .then(ui.viewFavoriteSuccess)
+  .catch(ui.viewFavoriteFailure)
+}
+
 function onUserViewTomes () {
   event.preventDefault()
   api.getUserTomes(store.user._id)

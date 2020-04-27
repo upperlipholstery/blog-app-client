@@ -24,6 +24,7 @@ $(() => {
   $('#view-tomes-btn-2').on('click', tomeEvents.onViewTomes)
   $('#view-user-tomes-btn').on('click', tomeEvents.onUserViewTomes)
   $('.content').on('click', '.view-modal', tomeEvents.selectView)
+  $('#view-favorite-tomes-btn').on('click', tomeEvents.onFavoriteTomes)
 
   // Update tome actions
   $('#editModalLong').on('click', '.update-button', tomeEvents.onUpdateTome)

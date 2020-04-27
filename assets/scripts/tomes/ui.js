@@ -21,6 +21,19 @@ function viewTomesSuccess (data) {
   $('#create-tome-menu').addClass('hidden')
 }
 
+function viewFavoriteSuccess (data) {
+  data.tomes = data.tomes.sort(function (a, b) {
+    a = new Date(a.createdAt)
+    b = new Date(b.createdAt)
+    return a > b ? -1 : a < b ? 1 : 0
+  })
+  data.tomes.forEach(x => { x.createdAt = (new Date(x.createdAt).toDateString()) })
+  const showTomesHtml = showTomesTemplate({tomes: data.tomes})
+  $('.content').html(showTomesHtml)
+  $('#tome-content').removeClass('hidden')
+  $('#create-tome-menu').addClass('hidden')
+}
+
 function viewUserTomesSuccess (data) {
   data.tomes = data.tomes.sort(function (a, b) {
     a = new Date(a.createdAt)
@@ -96,6 +109,10 @@ function viewTomesFailure () {
   console.log('viewTomes failed')
 }
 
+function viewFavoriteFailure () {
+  console.log('viewFavorites failed')
+}
+
 function createTomeFailure () {
   $('.messge').text('failed to create tome')
 }
@@ -110,5 +127,7 @@ module.exports = {
   deleteTomesFailure,
   updateTomesSuccess,
   selectUpdateTomesSuccess,
-  viewSingleTomeSuccess
+  viewSingleTomeSuccess,
+  viewFavoriteSuccess,
+  viewFavoriteFailure
 }
