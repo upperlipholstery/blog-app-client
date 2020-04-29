@@ -5,29 +5,52 @@ const tomeApi = require('../tomes/api')
 const tomeUi = require('../tomes/ui')
 const store = require('../store')
 const viewbodyTemplate = require('../templates/view-body-template.handlebars')
+const tomeNotesTemplate = require('../templates/tome-notes-template.handlebars')
 
 function createNoteSuccess () {
   tomeApi.showTome(store.viewItemId)
-    .then(refreshCurrentTome)
+    .then(refreshTomeNotes)
     .catch(ui.viewTomeFailure)
 }
 
 function confirmUpdateNoteSuccess () {
   tomeApi.showTome(store.viewItemId)
-    .then(refreshCurrentTome)
+    .then(refreshTomeNotes)
     .catch(ui.viewTomeFailure)
 }
 
 function confirmDeleteNoteSuccess () {
   tomeApi.showTome(store.viewItemId)
-    .then(refreshCurrentTome)
+    .then(refreshTomeNotes)
     .catch(ui.viewTomeFailure)
 }
 
 function cancelUpdateNote () {
   tomeApi.showTome(store.viewItemId)
-    .then(refreshCurrentTome)
+    .then(refreshTomeNotes)
     .catch(ui.viewTomeFailure)
+}
+
+function refreshTomeNotes (data) {
+  if (store.user) {
+    if (data.tome[0].owner._id === store.user._id) {
+      data.tome[0].notOwn = false
+    } else {
+      data.tome[0].notOwn = true
+    }
+    data.tome[0].notes.forEach(x => {
+      if (x.owner === store.user._id) {
+        x.own = true
+      } else {
+        x.own = false
+      }
+    })
+    if (store.user.favTomes.includes(data.tome[0]._id)) {
+      data.tome[0].favorite = true
+    }
+  }
+  const tomeNotesHtml = tomeNotesTemplate({notes: data.tome[0].notes})
+  $('#collapseExample').html(tomeNotesHtml)
 }
 
 function refreshCurrentTome (data) {

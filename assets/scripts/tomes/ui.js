@@ -9,6 +9,12 @@ const api = require('./api')
 const store = require('../store')
 
 function viewTomesSuccess (data) {
+  if (data.tomes.length === 0) {
+    $('#tomes-message').removeClass('hidden')
+    $('#tomes-message').text('No Tomes Written')
+  } else {
+    $('#tomes-message').addClass('hidden')
+  }
   data.tomes = data.tomes.sort(function (a, b) {
     a = new Date(a.createdAt)
     b = new Date(b.createdAt)
@@ -22,7 +28,6 @@ function viewTomesSuccess (data) {
       }
     }
   })
-  console.log(data)
   const showTomesHtml = showTomesTemplate({tomes: data.tomes})
   $('.content').html(showTomesHtml)
   $('#tome-content').removeClass('hidden')
@@ -31,6 +36,12 @@ function viewTomesSuccess (data) {
 }
 
 function viewUserTomesSuccess (data) {
+  if (data.tomes.length === 0) {
+    $('#tomes-message').removeClass('hidden')
+    $('#tomes-message').text('No Tomes Written')
+  } else {
+    $('#tomes-message').addClass('hidden')
+  }
   data.tomes = data.tomes.sort(function (a, b) {
     a = new Date(a.createdAt)
     b = new Date(b.createdAt)
@@ -71,7 +82,7 @@ function viewSingleTomeSuccess (data) {
 }
 
 function deleteTomesSuccess () {
-  api.viewTomes()
+  api.getUserTomes(store.user._id)
     .then(refreshListSuccess)
     .catch(refreshListFailure)
 }
@@ -88,6 +99,12 @@ function updateTomesSuccess () {
 }
 
 function refreshListSuccess (data) {
+  if (data.tomes.length === 0) {
+    $('#tomes-message').removeClass('hidden')
+    $('#tomes-message').text('No Tomes Written')
+  } else {
+    $('#tomes-message').addClass('hidden')
+  }
   data.tomes = data.tomes.sort(function (a, b) {
     a = new Date(a.createdAt)
     b = new Date(b.createdAt)
@@ -99,7 +116,7 @@ function refreshListSuccess (data) {
 }
 
 function createTomeSuccess () {
-  $('.message').text('Tome created')
+  $('.input-message').text('Tome created!')
   $('#create-tome')[0].reset('')
 }
 
