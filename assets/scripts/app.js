@@ -56,5 +56,4 @@ $(() => {
   $('#viewModalLong').on('click', '.delete-note', noteEvents.onDeleteNote)
   $('#viewModalLong').on('click', '.confirm-note-delete', noteEvents.confirmDeleteNote)
   $('#viewModalLong').on('click', '.cancel-note-delete', noteUi.cancelDeleteNote)
-
 })

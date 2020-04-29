@@ -8,14 +8,16 @@
       </div>
       <div class="modal-body" id="view-body">
         <p class="written-text">{{tome.body}}</p><br>
-        {{#if tome.favorite}}
-        <button data-id="{{tome._id}}" type="button" class="btn btn-outline-warning my-2 my-sm-0 toggle-favorite cover-text">
-          Remove
-        </button>
-        {{else}}
-        <button data-id="{{tome._id}}" type="button" class="btn btn-outline-warning my-2 my-sm-0 toggle-favorite cover-text">
-          Favorite
-        </button>
+        {{#if tome.notOwn}}
+          {{#if tome.favorite}}
+          <button data-id="{{tome._id}}" type="button" class="btn btn-secondary my-2 my-sm-0 toggle-favorite">
+            Remove
+          </button>
+          {{else}}
+          <button data-id="{{tome._id}}" type="button" class="btn btn-warning my-2 my-sm-0 toggle-favorite fav-btn">
+            Favorite
+          </button>
+          {{/if}}
         {{/if}}
         <div class="fancy-break"></div>
         {{#each tome.notes as |note|}}

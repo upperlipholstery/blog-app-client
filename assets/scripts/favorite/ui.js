@@ -1,16 +1,14 @@
 'use strict'
 
 const showTomesTemplate = require('../templates/blog-tome.handlebars')
-const showUserTomesTemplate = require('../templates/owner-blog-tomes.handlebars')
-const populateUpdateTemplate = require('../templates/populate-update-template.handlebars')
-const viewTomeTemplate = require('../templates/view-body-template.handlebars')
-const viewTomeTemplateNoInput = require('../templates/view-body-template-no-input.handlebars')
-const api = require('./api')
 const store = require('../store')
+const noteUi = require('../notes/ui')
+const tomeApi = require('../tomes/api')
+const tomeUi = require('../tomes/ui')
 
 function viewFavoritesSuccess (data) {
   console.log(data)
-  if(data.favTomes){
+  if (data.favTomes) {
     data.favTomes = data.favTomes.sort(function (a, b) {
       a = new Date(a.createdAt)
       b = new Date(b.createdAt)
@@ -21,8 +19,7 @@ function viewFavoritesSuccess (data) {
     $('.content').html(showTomesHtml)
     $('#tome-content').removeClass('hidden')
     $('#create-tome-menu').addClass('hidden')
-  }
-  else{
+  } else {
     console.log('no favorites')
   }
 }
@@ -35,9 +32,16 @@ function toggleFavoriteFailure () {
   console.log('toggleFavorites failed')
 }
 
+function toggleFavoriteSuccess (data) {
+  store.user.favTomes = data.favorites
+  tomeApi.showTome(store.favToggleTomeId)
+    .then(noteUi.refreshCurrentTome)
+    .catch(tomeUi.viewTomeFailure)
+}
+
 module.exports = {
   viewFavoritesSuccess,
   viewFavoritesFailure,
-  //toggleFavoriteSuccess,
+  toggleFavoriteSuccess,
   toggleFavoriteFailure
 }
