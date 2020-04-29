@@ -14,7 +14,15 @@ function viewTomesSuccess (data) {
     b = new Date(b.createdAt)
     return a > b ? -1 : a < b ? 1 : 0
   })
-  data.tomes.forEach(x => { x.createdAt = (new Date(x.createdAt).toDateString()) })
+  data.tomes.forEach(x => {
+    x.createdAt = (new Date(x.createdAt).toDateString())
+    if (store.user) {
+      if (store.user.favTomes.includes(x._id)) {
+        x.favorite = true
+      }
+    }
+  })
+  console.log(data)
   const showTomesHtml = showTomesTemplate({tomes: data.tomes})
   $('.content').html(showTomesHtml)
   $('#tome-content').removeClass('hidden')
@@ -39,6 +47,11 @@ function viewSingleTomeSuccess (data) {
   data.tome[0].createdAt = a.toDateString()
   data.tome[0].createdTime = a.toTimeString()
   if (store.user) {
+    if (data.tome[0].owner._id === store.user._id) {
+      data.tome[0].notOwn = false
+    } else {
+      data.tome[0].notOwn = true
+    }
     data.tome[0].notes.forEach(x => {
       if (x.owner === store.user._id) {
         x.own = true
@@ -46,7 +59,11 @@ function viewSingleTomeSuccess (data) {
         x.own = false
       }
     })
+    if (store.user.favTomes.includes(data.tome[0]._id)) {
+      data.tome[0].favorite = true
+    }
   }
+  console.log(data)
   const viewTomeHtml = store.user !== undefined ? viewTomeTemplate({tome: data.tome[0]}) : viewTomeTemplateNoInput({tome: data.tome[0]})
   $('#viewModalLong').html(viewTomeHtml)
 }

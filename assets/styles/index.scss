@@ -78,6 +78,14 @@ input {
   background-size: cover;
 }
 
+.fav-btn {
+  background: -webkit-linear-gradient(top, #8f6B29, #FDE08D, #DF9F28);
+}
+
+.fav-star {
+  align-self: flex-end;
+}
+
 .cover-text {
   background: -webkit-linear-gradient(top, #8f6B29, #FDE08D, #DF9F28);
   margin-left: 10px;

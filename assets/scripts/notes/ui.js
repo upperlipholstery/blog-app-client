@@ -1,10 +1,9 @@
 'use strict'
 
 const ui = require('./ui')
-// const api = require('./api')
 const tomeApi = require('../tomes/api')
+const tomeUi = require('../tomes/ui')
 const store = require('../store')
-// const getFormFields = require('../../../lib/get-form-fields')
 const viewbodyTemplate = require('../templates/view-body-template.handlebars')
 
 function createNoteSuccess () {
@@ -36,6 +35,11 @@ function refreshCurrentTome (data) {
   data.tome[0].createdAt = a.toDateString()
   data.tome[0].createdTime = a.toTimeString()
   if (store.user) {
+    if (data.tome[0].owner._id === store.user._id) {
+      data.tome[0].notOwn = false
+    } else {
+      data.tome[0].notOwn = true
+    }
     data.tome[0].notes.forEach(x => {
       if (x.owner === store.user._id) {
         x.own = true
@@ -43,9 +47,15 @@ function refreshCurrentTome (data) {
         x.own = false
       }
     })
+    if (store.user.favTomes.includes(data.tome[0]._id)) {
+      data.tome[0].favorite = true
+    }
   }
   const viewTomeHtml = viewbodyTemplate({tome: data.tome[0]})
   $('#viewModalLong').html(viewTomeHtml)
+  tomeApi.viewTomes()
+    .then(tomeUi.viewTomesSuccess)
+    .catch(tomeUi.viewTomesFailure)
 }
 
 function cancelDeleteNote () {
@@ -59,5 +69,6 @@ module.exports = {
   confirmDeleteNoteSuccess,
   confirmUpdateNoteSuccess,
   createNoteSuccess,
-  cancelUpdateNote
+  cancelUpdateNote,
+  refreshCurrentTome
 }

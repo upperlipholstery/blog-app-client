@@ -6,6 +6,7 @@
 const tomeEvents = require('./tomes/events')
 const noteEvents = require('./notes/events')
 const authEvents = require('./auth/events')
+const favoriteEvents = require('./favorite/events')
 const noteUi = require('./notes/ui')
 const ui = require('./ui')
 // use require without a reference to ensure a file is bundled
@@ -24,6 +25,7 @@ $(() => {
   $('#view-tomes-btn-2').on('click', tomeEvents.onViewTomes)
   $('#view-user-tomes-btn').on('click', tomeEvents.onUserViewTomes)
   $('.content').on('click', '.view-modal', tomeEvents.selectView)
+  $('#view-favorite-tomes-btn').on('click', favoriteEvents.onFavoriteTomes)
 
   // Update tome actions
   $('#editModalLong').on('click', '.update-button', tomeEvents.onUpdateTome)
@@ -39,6 +41,9 @@ $(() => {
   $('#create-tome').on('submit', tomeEvents.onCreateTome)
   $('#create-tome-btn').on('click', ui.showWriteTome)
 
+  // favorite tome
+  $('#viewModalLong').on('click', '.toggle-favorite', favoriteEvents.onToggleFavorite)
+
   // Create note
   $('#viewModalLong').on('submit', '#create-note', noteEvents.onCreateNote)
 
@@ -51,5 +56,4 @@ $(() => {
   $('#viewModalLong').on('click', '.delete-note', noteEvents.onDeleteNote)
   $('#viewModalLong').on('click', '.confirm-note-delete', noteEvents.confirmDeleteNote)
   $('#viewModalLong').on('click', '.cancel-note-delete', noteUi.cancelDeleteNote)
-
 })
