@@ -27,6 +27,7 @@ function signOutSuccess () {
   $('#regsidebar').addClass('hidden')
   $('#create-note-menu').addClass('hidden')
   $('#create-tome-menu').addClass('hidden')
+  $('.account-page').addClass('hidden')
   $('form input[type="text"]').val('')
   $('form input[type="password"]').val('')
   $('#content').html('')
