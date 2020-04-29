@@ -27,6 +27,7 @@ function viewTomesSuccess (data) {
   $('.content').html(showTomesHtml)
   $('#tome-content').removeClass('hidden')
   $('#create-tome-menu').addClass('hidden')
+  $('.account-page').addClass('hidden')
 }
 
 function viewUserTomesSuccess (data) {
@@ -40,6 +41,7 @@ function viewUserTomesSuccess (data) {
   $('.content').html(showUserTomesHtml)
   $('#tome-content').removeClass('hidden')
   $('#create-tome-menu').addClass('hidden')
+  $('.account-page').addClass('hidden')
 }
 
 function viewSingleTomeSuccess (data) {

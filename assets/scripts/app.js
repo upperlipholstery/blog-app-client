@@ -19,13 +19,18 @@ $(() => {
   $('.change-password-button').on('click', authEvents.onChangePassword)
   $('#sign-out-btn').on('click', authEvents.onSignOut)
 
-  // VIEW EVENTS
+  // UI events
+  $('#account-menu').on('click', ui.showAccount)
 
+  // View events
   $('#view-tomes-btn').on('click', tomeEvents.onViewTomes)
   $('#view-tomes-btn-2').on('click', tomeEvents.onViewTomes)
   $('#view-user-tomes-btn').on('click', tomeEvents.onUserViewTomes)
   $('.content').on('click', '.view-modal', tomeEvents.selectView)
-  $('#view-favorite-tomes-btn').on('click', favoriteEvents.onFavoriteTomes)
+
+  // Create tome action
+  $('#create-tome').on('submit', tomeEvents.onCreateTome)
+  $('#create-tome-btn').on('click', ui.showWriteTome)
 
   // Update tome actions
   $('#editModalLong').on('click', '.update-button', tomeEvents.onUpdateTome)
@@ -37,14 +42,11 @@ $(() => {
   $('.cancel-delete').on('click', tomeEvents.cancelDeleteTome)
   $('.content').on('click', '.delete-modal', tomeEvents.selectDeleteTome)
 
-  // create tome action
-  $('#create-tome').on('submit', tomeEvents.onCreateTome)
-  $('#create-tome-btn').on('click', ui.showWriteTome)
-
-  // favorite tome
+  // Favorite tome
   $('#viewModalLong').on('click', '.toggle-favorite', favoriteEvents.onToggleFavorite)
+  $('#view-favorite-tomes-btn').on('click', favoriteEvents.onFavoriteTomes)
 
-  // Create note
+  // Create note actions
   $('#viewModalLong').on('submit', '#create-note', noteEvents.onCreateNote)
 
   // Update note actions

@@ -33,6 +33,14 @@ input {
   padding: 20px;
 }
 
+.account-page {
+  background-image: url('https://imgur.com/1wFd5FS.png');
+  background-position: center;
+  background-size: cover;
+  margin-top: 45px;
+  padding: 20px;
+}
+
 .single-note {
   margin: 0 18px;
 }
@@ -64,6 +72,23 @@ input {
   background-size: cover;
   filter: brightness(90%);
 }
+
+.foot-message {
+  background-image: url('https://imgur.com/1wFd5FS.png');
+  background-position: center;
+  background-size: cover;
+  font-size: 150%;
+}
+
+.bottom-bar {
+  bottom: 0;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 85%;
+}
+
 
 .modal-content {
   background-color: #000;
@@ -132,7 +157,6 @@ input {
   margin: 10px;
 }
 
-
 .tome-item {
   margin: 15px;
 }
@@ -143,4 +167,11 @@ input {
 
 .modal-footer {
   border-top: 0 none;
+}
+
+.notebar {
+  margin-right: 16px;
+  height: 30px;
+  position: sticky;
+  top: 0;
 }

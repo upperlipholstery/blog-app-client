@@ -19,6 +19,7 @@ function viewFavoritesSuccess (data) {
     $('.content').html(showTomesHtml)
     $('#tome-content').removeClass('hidden')
     $('#create-tome-menu').addClass('hidden')
+    $('.account-page').addClass('hidden')
   } else {
     console.log('no favorites')
   }
