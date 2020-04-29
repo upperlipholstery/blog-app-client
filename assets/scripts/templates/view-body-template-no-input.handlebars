@@ -9,9 +9,11 @@
       <div class="modal-body" id="view-body">
         <p class="written-text">{{tome.body}}</p><br>
         <div class="notebar">
-          <button class="btn btn-dark float-right" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          {{#if tome.notes}}
+          <button class="btn btn-dark float-right align-middle" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             Notes
           </button>
+          {{/if}}
         </div>
         <div class="fancy-break"></div>
         <div class="collapse" id="collapseExample">
@@ -27,7 +29,7 @@
         <div class="fancy-break"></div>
         {{/each}}
       </div>
-        <div class="modal-footer">
+        <div class="modal-footer close-stuck">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close Tome</button>
         </div>
     </div>

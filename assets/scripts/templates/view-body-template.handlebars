@@ -13,18 +13,20 @@
       <div class="notebar">
         {{#if tome.notOwn}}
           {{#if tome.favorite}}
-          <button data-id="{{tome._id}}" type="button" class="btn btn-secondary my-2 my-sm-0 toggle-favorite float-right">
+          <button data-id="{{tome._id}}" type="button" class="btn btn-secondary my-2 my-sm-0 toggle-favorite float-right align-middle">
             Remove
           </button>
           {{else}}
-          <button data-id="{{tome._id}}" type="button" class="btn btn-warning my-2 my-sm-0 toggle-favorite fav-btn float-right">
+          <button data-id="{{tome._id}}" type="button" class="btn btn-warning my-2 my-sm-0 toggle-favorite fav-btn float-right align-middle">
             Archive
           </button>
           {{/if}}
         {{/if}}
+        {{#if tome.notes}}
         <button class="btn btn-dark float-right" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
           Notes
         </button>
+        {{/if}}
       </div>
 
       <div class="fancy-break"></div>
@@ -57,6 +59,8 @@
                   </button>
                 </div>
               </div>
+              {{else}}
+              <div class="button-placeholder">&schp;</div>
             {{/if}}
           </div>
           <div class="fancy-break"></div>
@@ -72,7 +76,7 @@
         </form>
       </div>
 
-      <div class="modal-footer">
+      <div class="modal-footer close-stuck">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close Tome</button>
       </div>
     </div>

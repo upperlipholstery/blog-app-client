@@ -1,0 +1,31 @@
+{{#each notes as |note|}}
+  <div class="single-note">
+    <div>
+      <h5>~ {{note.ownerName}} ~</h5>
+    </div>
+    <div class="note-body" data-id="{{note._id}}">
+      <p class="written-text">{{note.body}}</p>
+    </div>
+    {{#if note.own}}
+      <div class="note-buttons">
+        <div class="main-note-buttons">
+          <button data-id="{{note._id}}" type="button" class="btn btn-outline-success btn-sm edit-note">
+            Edit
+          </button>
+          <button data-id="{{note._id}}" type="button" class="btn btn-outline-danger btn-sm delete-note">
+            Delete
+          </button>
+        </div>
+        <div data-id="{{note._id}}" class="delete-check hidden">
+          <button data-id="{{note._id}}" type="button" class="btn btn-outline-danger btn-sm my-2 my-sm-0 confirm-note-delete">
+            Confirm
+          </button>
+          <button data-id="{{note._id}}" type="button" class="btn btn-outline-secondary btn-sm my-2 my-sm-0 cancel-note-delete">
+            Cancel
+          </button>
+        </div>
+      </div>
+    {{/if}}
+  </div>
+  <div class="fancy-break"></div>
+{{/each}}
