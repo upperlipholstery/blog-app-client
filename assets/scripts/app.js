@@ -9,6 +9,7 @@ const authEvents = require('./auth/events')
 const favoriteEvents = require('./favorite/events')
 const noteUi = require('./notes/ui')
 const ui = require('./ui')
+const profileEvents = require('./profile/events')
 // use require without a reference to ensure a file is bundled
 // require('./example')
 
@@ -17,7 +18,7 @@ $(() => {
   $('#sign-up-btn').on('click', authEvents.onSignUp)
   $('#sign-in-btn').on('click', authEvents.onSignIn)
   $('.change-password-button').on('click', authEvents.onChangePassword)
-  $('#sign-out-btn').on('click', authEvents.onSignOut)
+  $('.right-body').on('click', '#sign-out-btn', authEvents.onSignOut)
 
   // UI events
   $('#account-menu').on('click', ui.showAccount)
@@ -58,4 +59,7 @@ $(() => {
   $('#viewModalLong').on('click', '.delete-note', noteEvents.onDeleteNote)
   $('#viewModalLong').on('click', '.confirm-note-delete', noteEvents.confirmDeleteNote)
   $('#viewModalLong').on('click', '.cancel-note-delete', noteUi.cancelDeleteNote)
+
+  // profile EVENTS
+  $('.right-body').on('click', '#submit-avatar', profileEvents.onUploadPic)
 })

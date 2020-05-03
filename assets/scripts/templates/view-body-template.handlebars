@@ -1,7 +1,7 @@
 <div class="modal-dialog modal-xl" role="document">
   <div class="modal-content">
     <div class="modal-header">
-      <div class="modal-title" id="view-title"><h3>{{tome.title}}<h3><h5>Written by: {{tome.owner.email}} on {{tome.createdAt}}</h5></div>
+      <div class="modal-title" id="view-title"><h3>{{tome.title}}<h3><h5>Written by: <a class="user-link" data-id='{{tome.owner.id}}'>{{tome.owner.email}}</a> on {{tome.createdAt}}</h5></div>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -70,7 +70,7 @@
       <div id="create-note-menu" class="container col-12">
         <form id="create-note">
           <div class="form-group">
-            <textarea class="form-input form-control paper-input" name="note[body]" placeholder="Body" rows="5"></textarea>
+            <textarea class="form-input form-control paper-input" name="note[body]" placeholder="Leave a note!" rows="5"></textarea>
           </div>
           <input type="submit" value="Submit Note" class="btn btn-outline-dark my-2 my-sm-0">
         </form>

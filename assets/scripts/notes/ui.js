@@ -8,6 +8,7 @@ const viewbodyTemplate = require('../templates/view-body-template.handlebars')
 const tomeNotesTemplate = require('../templates/tome-notes-template.handlebars')
 
 function createNoteSuccess () {
+
   tomeApi.showTome(store.viewItemId)
     .then(refreshTomeNotes)
     .catch(ui.viewTomeFailure)

@@ -36,19 +36,20 @@ function viewTomesSuccess (data) {
 }
 
 function viewUserTomesSuccess (data) {
-  if (data.tomes.length === 0) {
+  console.log(data)
+  if (data.user.tomes.length === 0) {
     $('#tomes-message').removeClass('hidden')
     $('#tomes-message').text('No Tomes Written')
   } else {
     $('#tomes-message').addClass('hidden')
   }
-  data.tomes = data.tomes.sort(function (a, b) {
+  data.user.tomes = data.user.tomes.sort(function (a, b) {
     a = new Date(a.createdAt)
     b = new Date(b.createdAt)
     return a > b ? -1 : a < b ? 1 : 0
   })
-  data.tomes.forEach(x => { x.createdAt = (new Date(x.createdAt).toDateString()) })
-  const showUserTomesHtml = showUserTomesTemplate({tomes: data.tomes})
+  data.user.tomes.forEach(x => { x.createdAt = (new Date(x.createdAt).toDateString()) })
+  const showUserTomesHtml = showUserTomesTemplate({tomes: data.user.tomes})
   $('.content').html(showUserTomesHtml)
   $('#tome-content').removeClass('hidden')
   $('#create-tome-menu').addClass('hidden')
