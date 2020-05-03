@@ -2,6 +2,8 @@
 
 const store = require('../store')
 const api = require('./api')
+const avatarTemplate = require('../templates/avatar-template.handlebars')
+const defaultAvatarTemplate = require('../templates/default-avatar-template.handlebars')
 
 function signUpSuccess (data) {
   store.user = data.user
@@ -20,12 +22,15 @@ function signUpSuccess (data) {
 
 function signInSuccess (data) {
   store.user = data.user
+  console.log(store.user)
   $('#regsidebar').removeClass('hidden')
   $('#unregsidebar').addClass('hidden')
   $('#tomes-message').addClass('hidden')
   $('#content').html('')
   $('form input[type="text"]').val('')
   $('form input[type="password"]').val('')
+  const avatarHtml = data.user.imageUrl ? avatarTemplate({ user: data.user }) : defaultAvatarTemplate({ user: data.user })
+  $('.logo2').html(avatarHtml)
 }
 
 function signOutSuccess () {
