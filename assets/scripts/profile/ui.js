@@ -1,7 +1,6 @@
 'use strict'
 
 const userTemplate = require('../templates/user-template.handlebars')
-const defaultUserTemplate = require('../templates/default-user-template.handlebars')
 const otherUserTemplate = require('../templates/other-user-template.handlebars')
 
 function onUploadPicSuccess (data) {
@@ -13,12 +12,17 @@ function onUploadPicFailure (data) {
 }
 
 function getOtherUserSuccess (data) {
+  console.log(data)
   const otherUserHtml = otherUserTemplate({user: data.user})
   $('#profile-page').html(otherUserHtml)
+  $('#tome-content').addClass('hidden')
+  $('#create-tome-menu').addClass('hidden')
+  $('#tomes-message').addClass('hidden')
+  $('.account-page').removeClass('hidden')
 }
 
 function getUserSuccess (data) {
-  const userHtml = data.user.imageUrl ? userTemplate({ user: data.user }) : defaultUserTemplate({ user: data.user })
+  const userHtml = userTemplate({ user: data.user })
   $('#profile-page').html(userHtml)
 }
 

@@ -8,7 +8,7 @@
     </div>
     {{#if note.own}}
       <div class="note-buttons">
-        <div class="main-note-buttons">
+        <div class="main-note-buttons" data-id="{{note._id}}">
           <button data-id="{{note._id}}" type="button" class="btn btn-outline-success btn-sm edit-note">
             Edit
           </button>

@@ -42,7 +42,7 @@
             </div>
             {{#if note.own}}
               <div class="note-buttons">
-                <div class="main-note-buttons">
+                <div data-id="{{note._id}}" class="main-note-buttons">
                   <button data-id="{{note._id}}" type="button" class="btn btn-outline-success btn-sm edit-note">
                     Edit
                   </button>
@@ -60,7 +60,6 @@
                 </div>
               </div>
               {{else}}
-              <div class="button-placeholder">&schp;</div>
             {{/if}}
           </div>
           <div class="fancy-break"></div>
