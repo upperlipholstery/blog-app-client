@@ -16,6 +16,17 @@ const createUpload = formData => {
   })
 }
 
+function updateBio (data) {
+  return $.ajax({
+    url: config.apiUrl + '/user_bio/',
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
+
 function getUser (id) {
   return $.ajax({
     url: config.apiUrl + '/users/' + id,
@@ -28,5 +39,6 @@ function getUser (id) {
 
 module.exports = {
   createUpload,
-  getUser
+  getUser,
+  updateBio
 }

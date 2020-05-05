@@ -63,6 +63,7 @@ $(() => {
   // profile EVENTS
   $('.right-body').on('click', '#submit-avatar', profileEvents.onUploadPic)
   $('.content').on('click', '.user-link', profileEvents.onOtherProfile)
+  $('.right-body').on('click', '#bio-submit', profileEvents.onChangeBio)
 
   // Enter key confirms sign in/up
   $('#SUEnter').keypress(function (event) {

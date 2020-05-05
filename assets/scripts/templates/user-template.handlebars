@@ -11,7 +11,9 @@
 </div>
 <div class="bio">
   <h2>Bio:</h2>
-  <p>{{user.bio}}</p>
+  <textarea id='bio-edit' class='form-input form-control paper-input' data-toggle="collapse" data-target="#bioSubmitCollapse" rows='4' cols='100'>{{user.bio}}</textarea>
+  <div class="collapse" id="bioSubmitCollapse">
+  <button type="button" class="btn btn-secondary bio-submit-button" id="bio-submit">Submit</button>
 </div>
 <div class="account-stats">
   <p>Stats:</p><br>

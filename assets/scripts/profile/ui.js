@@ -26,9 +26,18 @@ function getUserSuccess (data) {
   $('#profile-page').html(userHtml)
 }
 
+function onUpdateBioSuccess () {
+  $('#bio-edit').click()
+}
+
+function onUpdateBioFailure () {
+}
+
 module.exports = {
   onUploadPicSuccess,
   onUploadPicFailure,
   getUserSuccess,
-  getOtherUserSuccess
+  getOtherUserSuccess,
+  onUpdateBioSuccess,
+  onUpdateBioFailure
 }
