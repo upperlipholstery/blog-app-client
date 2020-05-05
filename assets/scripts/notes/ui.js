@@ -8,7 +8,6 @@ const viewbodyTemplate = require('../templates/view-body-template.handlebars')
 const tomeNotesTemplate = require('../templates/tome-notes-template.handlebars')
 
 function createNoteSuccess () {
-
   tomeApi.showTome(store.viewItemId)
     .then(refreshTomeNotes)
     .catch(ui.viewTomeFailure)
@@ -27,6 +26,9 @@ function confirmDeleteNoteSuccess () {
 }
 
 function cancelUpdateNote () {
+  $(`.main-note-buttons[data-id=${store.updateNoteId}]`).removeClass('hidden')
+  $('.edit-note').attr('disabled', false)
+  $('.delete-note').attr('disabled', false)
   tomeApi.showTome(store.viewItemId)
     .then(refreshTomeNotes)
     .catch(ui.viewTomeFailure)
@@ -83,9 +85,10 @@ function refreshCurrentTome (data) {
 }
 
 function cancelDeleteNote () {
-  $(`.main-note-buttons`).removeClass('hidden')
+  $(`.main-note-buttons[data-id=${store.deleteNoteId}]`).removeClass('hidden')
+  $('.edit-note').attr('disabled', false)
+  $('.delete-note').attr('disabled', false)
   $(`.delete-check[data-id=${store.deleteNoteId}]`).addClass('hidden')
-  $(`.delete-note[data-id=${store.deleteNoteId}]`).removeClass('hidden')
 }
 
 module.exports = {

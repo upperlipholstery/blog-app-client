@@ -62,4 +62,23 @@ $(() => {
 
   // profile EVENTS
   $('.right-body').on('click', '#submit-avatar', profileEvents.onUploadPic)
+  $('.content').on('click', '.user-link', profileEvents.onOtherProfile)
+
+  // Enter key confirms sign in/up
+  $('#SUEnter').keypress(function (event) {
+    console.log(event.keyCode)
+    if (event.keyCode === 13) {
+      $('.sign-up-button').click()
+    }
+  })
+  $('#SIEnter').keypress(function (event) {
+    if (event.keyCode === 13) {
+      $('.sign-in-button').click()
+    }
+  })
+  $('#CPnter').keypress(function (event) {
+    if (event.keyCode === 13) {
+      $('.change-password-button').click()
+    }
+  })
 })

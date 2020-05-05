@@ -20,7 +20,9 @@ function onUserProfile () {
 }
 
 function onOtherProfile () {
-  api.getUser()
+  console.log($(event.target).data('id'))
+  store.OtherUserId = $(event.target).data('id')
+  api.getUser(store.OtherUserId)
     .then(ui.getOtherUserSuccess)
     .catch(ui.getUserFailure)
 }

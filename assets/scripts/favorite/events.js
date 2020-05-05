@@ -14,6 +14,12 @@ function onFavoriteTomes (event) {
 function onToggleFavorite (event) {
   event.preventDefault()
   store.favToggleTomeId = $(event.target).data('id')
+  if (!store.user.favTomes.includes(store.favToggleTomeId)) {
+    store.user.favTomes.push(store.favToggleTomeId)
+  } else {
+    store.user.favTomes = store.user.favTomes.filter(fav => fav !== store.favToggleTomeId)
+  }
+  console.log(store.favToggleTomeId)
   api.toggleFavorite(store.favToggleTomeId)
     .then(ui.toggleFavoriteSuccess)
     .catch(ui.toggleFavoriteFailure)

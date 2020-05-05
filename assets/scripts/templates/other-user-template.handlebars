@@ -1,29 +1,12 @@
-<button class="btn btn-dark" type="button" data-toggle="collapse" data-target="#Uploadcollapse" aria-expanded="false" aria-controls="Uploadcollapse">
-  PLACEHOLDER
-</button>
-<div class="collapse" id="Uploadcollapse">
-  <div class="col lg-2 avatar-form">
-    <form id="avatar" >
-      <input type="file" name="image" required="required" accept="image/png, image/jpeg">
-      <button type="button" class="btn btn-secondary upload-btn" id="submit-avatar">
-        Submit
-      </button>
-    </form>
-  </div>
-</div>
+<a><img class="profile-image" src="{{user.imageUrl}}"></a><span>{{user.email}}: joined {{user.createdAt}}</span>
 <div class="bio">
   <h2>Bio:</h2>
+  <p>{{user.bio}}</p>
 </div>
 <div class="account-stats">
-  <p>Stats:</p>
-</div>
-<div class="acount-auth">
-  <!-- Change Password -->
-  <button type="button" class="btn btn-secondary change-pass-btn" data-toggle="modal" data-target="#changePasswordModal">
-    Change Password
-  </button>
-  <!-- Sign Out -->
-  <button id="sign-out-btn" class="btn btn-secondary">
-    Sign Out
-  </button>
+  <p>Stats:</p><br>
+  <p>Tomes: {{length user.tomes}}</p>
+  <p>Likes received: {{user.numLikes}}</p>
+  <p>Times Archived: {{user.numFavs}}</p>
+  <p>Notes left: {{user.numNotes}}</p>
 </div>

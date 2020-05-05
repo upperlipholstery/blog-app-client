@@ -11,10 +11,14 @@
 </div>
 <div class="bio">
   <h2>Bio:</h2>
+  <p>{{user.bio}}</p>
 </div>
 <div class="account-stats">
   <p>Stats:</p><br>
-  <p>Tomes: {{length user.tomes}}</p><p></p>
+  <p>Tomes: {{length user.tomes}}</p>
+  <p>Likes received: {{user.numLikes}}</p>
+  <p>Times Archived: {{user.numFavs}}</p>
+  <p>Notes left: {{user.numNotes}}</p>
 </div>
 <div class="acount-auth">
   <!-- Change Password -->
