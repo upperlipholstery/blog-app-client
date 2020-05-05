@@ -14,6 +14,7 @@ function onUploadPic (event) {
 }
 
 function onUserProfile () {
+  console.log('user pro')
   api.getUser(store.user._id)
     .then(ui.getUserSuccess)
     .catch(ui.getUserFailure)
@@ -29,11 +30,15 @@ function onChangeBio (event) {
 }
 
 function onOtherProfile () {
-  console.log($(event.target).data('id'))
-  store.OtherUserId = $(event.target).data('id')
-  api.getUser(store.OtherUserId)
-    .then(ui.getOtherUserSuccess)
-    .catch(ui.getUserFailure)
+  if ($(event.target).data('id') === store.user._id) {
+    console.log($(event.target).data('id') === store.user._id)
+    onUserProfile()
+  } else {
+    store.OtherUserId = $(event.target).data('id')
+    api.getUser(store.OtherUserId)
+      .then(ui.getOtherUserSuccess)
+      .catch(ui.getUserFailure)
+  }
 }
 
 module.exports = {

@@ -12,7 +12,6 @@ function onUploadPicFailure (data) {
 }
 
 function getOtherUserSuccess (data) {
-  console.log(data)
   const otherUserHtml = otherUserTemplate({user: data.user})
   $('#profile-page').html(otherUserHtml)
   $('#tome-content').addClass('hidden')
@@ -24,6 +23,10 @@ function getOtherUserSuccess (data) {
 function getUserSuccess (data) {
   const userHtml = userTemplate({ user: data.user })
   $('#profile-page').html(userHtml)
+  $('#tome-content').addClass('hidden')
+  $('#create-tome-menu').addClass('hidden')
+  $('#tomes-message').addClass('hidden')
+  $('.account-page').removeClass('hidden')
 }
 
 function onUpdateBioSuccess () {
