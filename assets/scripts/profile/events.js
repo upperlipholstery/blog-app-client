@@ -19,6 +19,15 @@ function onUserProfile () {
     .catch(ui.getUserFailure)
 }
 
+function onChangeBio (event) {
+  event.preventDefault()
+  const newBio = { bio: $('#bio-edit').val() }
+  api.updateBio(newBio)
+    .then(ui.onUpdateBioSuccess)
+    .catch(ui.onUpdateBioFailure)
+  console.log(newBio)
+}
+
 function onOtherProfile () {
   console.log($(event.target).data('id'))
   store.OtherUserId = $(event.target).data('id')
@@ -30,5 +39,6 @@ function onOtherProfile () {
 module.exports = {
   onUploadPic,
   onUserProfile,
-  onOtherProfile
+  onOtherProfile,
+  onChangeBio
 }
