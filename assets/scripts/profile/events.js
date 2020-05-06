@@ -6,7 +6,6 @@ const store = require('../store')
 
 function onUploadPic (event) {
   event.preventDefault()
-  console.log($('#avatar')[0])
   const formData = new FormData($('#avatar')[0])
   api.createUpload(formData)
     .then(ui.onUploadPicSuccess)
@@ -14,7 +13,6 @@ function onUploadPic (event) {
 }
 
 function onUserProfile () {
-  console.log('user pro')
   api.getUser(store.user._id)
     .then(ui.getUserSuccess)
     .catch(ui.getUserFailure)
@@ -31,7 +29,6 @@ function onChangeBio (event) {
 
 function onOtherProfile () {
   if ($(event.target).data('id') === store.user._id) {
-    console.log($(event.target).data('id') === store.user._id)
     onUserProfile()
   } else {
     store.OtherUserId = $(event.target).data('id')

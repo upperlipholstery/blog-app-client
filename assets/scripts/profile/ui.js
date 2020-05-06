@@ -4,7 +4,7 @@ const userTemplate = require('../templates/user-template.handlebars')
 const otherUserTemplate = require('../templates/other-user-template.handlebars')
 
 function onUploadPicSuccess (data) {
-  console.log(data)
+  console.log('upload complete!')
 }
 
 function onUploadPicFailure (data) {

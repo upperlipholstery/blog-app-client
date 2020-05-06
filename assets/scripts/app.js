@@ -46,6 +46,7 @@ $(() => {
   // Favorite tome
   $('#viewModalLong').on('click', '.toggle-favorite', favoriteEvents.onToggleFavorite)
   $('#view-favorite-tomes-btn').on('click', favoriteEvents.onFavoriteTomes)
+  $('#viewModalLong').on('click', '.toggle-like', favoriteEvents.onToggleLike)
 
   // Create note actions
   $('#viewModalLong').on('submit', '#create-note', noteEvents.onCreateNote)
@@ -63,7 +64,12 @@ $(() => {
   // profile EVENTS
   $('.right-body').on('click', '#submit-avatar', profileEvents.onUploadPic)
   $('.content').on('click', '.user-link', profileEvents.onOtherProfile)
+  $('#viewModalLong').on('click', '.user-link', profileEvents.onOtherProfile)
   $('.right-body').on('click', '#bio-submit', profileEvents.onChangeBio)
+
+  // profile picture events
+  $('.right-body').on('click', '.tome-icon', profileEvents.onOtherProfile)
+  $('#viewModalLong').on('click', '.view-icon', profileEvents.onOtherProfile)
 
   // Enter key confirms sign in/up
   $('#SUEnter').keypress(function (event) {
