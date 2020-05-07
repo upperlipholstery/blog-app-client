@@ -20,12 +20,9 @@ function viewTomesSuccess (data) {
     b = new Date(b.createdAt)
     return a > b ? -1 : a < b ? 1 : 0
   })
-  console.log(data, 'data1')
   data.tomes.forEach(x => {
     x.createdAt = (new Date(x.createdAt).toDateString())
     if (store.user) {
-      console.log(x, 'current tome')
-      console.log(store.user.favTomes, 'favTomes')
       if (store.user.favTomes.includes(x._id)) {
         x.favorite = true
       }

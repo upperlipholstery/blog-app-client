@@ -13,24 +13,32 @@
 
       <div class="notebar">
         {{#if tome.notOwn}}
-          <button data-id="{{tome._id}}" type="button" class="btn btn-secondary my-2 my-sm-0 toggle-like float-right align-middle">
-            Like
-          </button>
           {{#if tome.favorite}}
-          <button data-id="{{tome._id}}" type="button" class="btn btn-secondary my-2 my-sm-0 toggle-favorite float-right align-middle">
+          <button data-id="{{tome._id}}" type="button" class="input-button btn btn-secondary my-2 my-sm-0 toggle-favorite float-right align-middle">
             Remove
           </button>
           {{else}}
-          <button data-id="{{tome._id}}" type="button" class="btn btn-warning my-2 my-sm-0 toggle-favorite fav-btn float-right align-middle">
+          <button data-id="{{tome._id}}" type="button" class="input-button btn btn-warning my-2 my-sm-0 toggle-favorite fav-btn float-right align-middle">
             Archive
           </button>
           {{/if}}
-        {{/if}}
-        {{#if tome.notes}}
-        <button class="btn btn-dark float-right" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-          Notes
-        </button>
-        {{/if}}
+          {{/if}}
+          {{#if tome.notes}}
+          <button class="btn btn-dark float-right input-button" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Notes
+          </button>
+          {{/if}}
+          {{#if tome.notOwn}}
+          {{#if tome.liked}}
+          <button data-id="{{tome._id}}" type="button" class="input-button btn btn-success my-2 my-sm-0 toggle-like float-right align-middle">
+            Like
+          </button>
+          {{else}}
+          <button data-id="{{tome._id}}" type="button" class="input-button btn btn-danger my-2 my-sm-0 toggle-like float-right align-middle">
+            Unlike
+          </button>
+          {{/if}}
+          {{/if}}
       </div>
 
       <div class="fancy-break"></div>
@@ -73,9 +81,9 @@
       <div id="create-note-menu" class="container col-12">
         <form id="create-note">
           <div class="form-group">
-            <textarea class="form-input form-control paper-input" name="note[body]" placeholder="Leave a note!" rows="5"></textarea>
+            <textarea class="form-input form-control paper-input" type="text" name="note[body]" placeholder="Leave a note!" rows="5"></textarea>
           </div>
-          <input type="submit" value="Submit Note" class="btn btn-outline-dark my-2 my-sm-0">
+          <input type="submit" value="Submit Note" class="btn btn-outline-dark my-2 my-sm-0"><span class="ml-1" id="note-message"></span>
         </form>
       </div>
 

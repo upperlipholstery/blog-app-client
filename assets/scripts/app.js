@@ -46,6 +46,8 @@ $(() => {
   // Favorite tome
   $('#viewModalLong').on('click', '.toggle-favorite', favoriteEvents.onToggleFavorite)
   $('#view-favorite-tomes-btn').on('click', favoriteEvents.onFavoriteTomes)
+
+  // Like evenet
   $('#viewModalLong').on('click', '.toggle-like', favoriteEvents.onToggleLike)
 
   // Create note actions

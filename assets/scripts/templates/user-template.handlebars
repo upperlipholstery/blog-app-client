@@ -1,4 +1,8 @@
-<a data-toggle="collapse" data-target="#Uploadcollapse"><img class="profile-image" src="{{user.imageUrl}}"></a><span>{{user.email}}: joined {{user.createdAt}}</span>
+<a data-toggle="collapse" data-target="#Uploadcollapse"><img class="profile-image" src="{{user.imageUrl}}"></a>
+<div="user-header">
+  <h4 class="user-header">User: {{user.email}}</h4>
+  <h4 class="user-header">joined: {{user.createdAt}}</h4>
+</div>
 <div class="collapse" id="Uploadcollapse">
   <div class="col lg-2 avatar-form">
     <form id="avatar" >
@@ -16,7 +20,7 @@
   <button type="button" class="btn btn-secondary bio-submit-button" id="bio-submit">Submit</button>
 </div>
 <div class="account-stats">
-  <p>Stats:</p><br>
+  <h4>Stats:</h4>
   <p>Tomes: {{length user.tomes}}</p>
   <p>Likes received: {{user.numLikes}}</p>
   <p>Times Archived: {{user.numFavs}}</p>
@@ -28,7 +32,7 @@
     Change Password
   </button>
   <!-- Sign Out -->
-  <button id="sign-out-btn" class="btn btn-secondary">
+  <button id="sign-out-btn" class="btn btn-secondary input-button">
     Sign Out
   </button>
 </div>

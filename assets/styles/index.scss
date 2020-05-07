@@ -41,6 +41,10 @@ input {
   font-family: 'Spectral', serif;
 }
 
+img {
+  cursor: pointer;
+}
+
 #create-tome-menu {
   background: linear-gradient(90deg, rgba(245,209,95,1) 0%, rgba(244,224,167,1) 25%, rgba(244,225,173,1) 50%, rgba(244,223,165,1) 75%, rgba(245,209,95,1) 100%);
   margin-top: 45px;
@@ -65,6 +69,10 @@ input {
 
 .modal-content {
   background: linear-gradient(90deg, rgba(245,209,95,1) 0%, rgba(244,224,167,1) 25%, rgba(244,225,173,1) 50%, rgba(244,223,165,1) 75%, rgba(245,209,95,1) 100%);
+}
+
+.auth-input {
+  margin: 10px 0 10px 0;
 }
 
 .single-note {
@@ -129,15 +137,19 @@ input {
 
 .fav-star {
   align-self: flex-end;
+  display: inline;
 }
 
 .cover-text {
   background: -webkit-linear-gradient(top, #8f6B29, #FDE08D, #DF9F28);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-left: 10px;
+  margin-left: 15px;
 }
 
+.input-button {
+  margin-left: 10px;
+}
 
 .sidenav {
   background-color: #111;
@@ -170,7 +182,20 @@ input {
 .avatar-icon {
   max-width: 100%;
   max-height: 80%;
-  margin-left: 5px;
+  margin-left: 10px;
+}
+
+.view-icon {
+  max-height: 80px;
+  max-width: 80px;
+  margin-right: 20px;
+}
+
+.tome-icon {
+  display: inline;
+  max-height: 50px;
+  max-width: 50px;
+  margin-left: 18px;
 }
 
 .right-body {
@@ -193,6 +218,12 @@ input {
   justify-content: center;
   margin-top: 300px;
   text-align: center;
+}
+
+.user-header {
+  display: inline;
+  max-width: 50%;
+  margin-left: 30px;
 }
 
 .sidebar-item {

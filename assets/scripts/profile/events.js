@@ -28,13 +28,17 @@ function onChangeBio (event) {
 }
 
 function onOtherProfile () {
-  if ($(event.target).data('id') === store.user._id) {
-    onUserProfile()
+  if (store.user) {
+    if ($(event.target).data('id') === store.user._id) {
+      onUserProfile()
+    } else {
+      store.OtherUserId = $(event.target).data('id')
+      api.getUser(store.OtherUserId)
+        .then(ui.getOtherUserSuccess)
+        .catch(ui.getUserFailure)
+    }
   } else {
-    store.OtherUserId = $(event.target).data('id')
-    api.getUser(store.OtherUserId)
-      .then(ui.getOtherUserSuccess)
-      .catch(ui.getUserFailure)
+    $('#user-message').text('Sign In to View User Profile')
   }
 }
 

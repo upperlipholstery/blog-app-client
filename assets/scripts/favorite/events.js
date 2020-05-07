@@ -17,7 +17,9 @@ function onToggleFavorite (event) {
   if (!store.user.favTomes.includes(store.favToggleTomeId)) {
     store.user.favTomes.push(store.favToggleTomeId)
   } else {
-    store.user.favTomes = store.user.favTomes.filter(fav => fav !== store.favToggleTomeId)
+    store.user.favTomes = store.user.favTomes.filter(fav => {
+      return fav !== store.favToggleTomeId
+    })
   }
   api.toggleFavorite(store.favToggleTomeId)
     .then(ui.toggleFavoriteSuccess)

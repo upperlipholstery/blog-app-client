@@ -1,10 +1,14 @@
-<a><img class="profile-image" src="{{user.imageUrl}}"></a><span>{{user.email}}: joined {{user.createdAt}}</span>
+<a><img class="profile-image" src="{{user.imageUrl}}"></a>
+<div="user-header">
+  <h4 class="user-header">User: {{user.email}}</h4>
+  <h4 class="user-header">joined: {{user.createdAt}}</h4>
+</div>
 <div class="bio">
   <h2>Bio:</h2>
   <p>{{user.bio}}</p>
 </div>
 <div class="account-stats">
-  <p>Stats:</p><br>
+  <h4>Stats:</h4>
   <p>Tomes: {{length user.tomes}}</p>
   <p>Likes received: {{user.numLikes}}</p>
   <p>Times Archived: {{user.numFavs}}</p>
