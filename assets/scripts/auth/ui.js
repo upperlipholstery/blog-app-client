@@ -28,6 +28,7 @@ function signInSuccess (data) {
   $('form input[type="password"]').val('')
   const avatarHtml = avatarTemplate({ user: data.user })
   $('.logo2').html(avatarHtml)
+  $('#user-message').html('<a href="https://github.com/ArKaneVision" target="_blank">Kane Two Feathers</a> & <a href="https://github.com/taharon" target="_blank">Tal Aharon</a>')
 }
 
 function signOutSuccess () {

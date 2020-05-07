@@ -7,6 +7,7 @@ const tomeApi = require('../tomes/api')
 const tomeUi = require('../tomes/ui')
 
 function viewFavoritesSuccess (data) {
+  console.log(data)
   if (data.favTomes.length === 0) {
     $('#tomes-message').removeClass('hidden')
     $('#tomes-message').text('No Tomes Archived')
@@ -30,6 +31,38 @@ function viewFavoritesSuccess (data) {
   }
 }
 
+function toggleFavoriteSuccess (data) {
+  tomeApi.showTome(store.favToggleTomeId)
+    .then(refreshNotebar)
+    .catch(tomeUi.viewTomeFailure)
+}
+
+function toggleLikeSuccess () {
+  tomeApi.showTome(store.likeToggleTomeId)
+    .then(refreshNotebar)
+    .catch(tomeUi.viewTomeFailure)
+}
+
+function refreshNotebar (data) {
+  console.log(data, 'before notOwn')
+  console.log(store.user)
+  console.log(data.tome[0].owner)
+  if (data.tome[0].owner._id === store.user._id) {
+    data.tome[0].notOwn = false
+  } else {
+    data.tome[0].notOwn = true
+  }
+  console.log(data, 'after notOwn')
+  if (store.user.favTomes.includes(data.tome[0]._id)) {
+    data.tome[0].favorite = true
+  }
+  if (store.user.likedTomes.includes(data.tome[0]._id)) {
+    data.tome[0].liked = true
+  }
+  const noteBarHtml = notebarTemplate({tome: data.tome[0]})
+  $('.notebar').html(noteBarHtml)
+}
+
 function viewFavoritesFailure () {
   console.log('viewFavorites failed')
 }
@@ -38,45 +71,37 @@ function toggleFavoriteFailure () {
   console.log('toggleFavorites failed')
 }
 
-function toggleFavoriteSuccess (data) {
-  console.log('hello!')
-  // store.user.favTomes = data.favorites
-  // tomeApi.showTome(store.favToggleTomeId)
-  //   .then(refreshNotebar)
-  //   .catch(tomeUi.viewTomeFailure)
+function toggleLikeFailure () {
+  console.log('toggle like failuire')
 }
-
-// function refreshNotebar (data) {
-//   const a = new Date(data.tome[0].createdAt)
-//   data.tome[0].createdAt = a.toDateString()
-//   data.tome[0].createdTime = a.toTimeString()
-//   if (store.user) {
-//     if (data.tome[0].owner._id === store.user._id) {
-//       data.tome[0].notOwn = false
-//     } else {
-//       data.tome[0].notOwn = true
-//     }
-//     data.tome[0].notes.forEach(x => {
-//       if (x.owner === store.user._id) {
-//         x.own = true
-//       } else {
-//         x.own = false
-//       }
-//     })
-//     if (store.user.favTomes.includes(data.tome[0]._id)) {
-//       data.tome[0].favorite = true
-//     }
+// const a = new Date(data.tome[0].createdAt)
+// data.tome[0].createdAt = a.toDateString()
+// data.tome[0].createdTime = a.toTimeString()
+// if (store.user) {
+//   if (data.tome[0].owner._id === store.user._id) {
+//     data.tome[0].notOwn = false
+//   } else {
+//     data.tome[0].notOwn = true
 //   }
-//   const notebarHtml = notebarTemplate({tome: data.tome[0]})
-//   $('.notebar').html(notebarHtml)
-//   tomeApi.viewTomes()
-//     .then(tomeUi.viewTomesSuccess)
-//     .catch(tomeUi.viewTomesFailure)
+//   data.tome[0].notes.forEach(x => {
+//     if (x.owner === store.user._id) {
+//       x.own = true
+//     } else {
+//       x.own = false
+//     }
+//   })
 // }
-
+// const notebarHtml = notebarTemplate({tome: data.tome[0]})
+// $('.notebar').html(notebarHtml)
+// tomeApi.viewTomes()
+// .then(tomeUi.viewTomesSuccess)
+// .catch(tomeUi.viewTomesFailure)
 module.exports = {
   viewFavoritesSuccess,
   viewFavoritesFailure,
   toggleFavoriteSuccess,
-  toggleFavoriteFailure
+  toggleFavoriteFailure,
+  toggleLikeFailure,
+  toggleLikeSuccess,
+  refreshNotebar
 }

@@ -4,7 +4,7 @@ const userTemplate = require('../templates/user-template.handlebars')
 const otherUserTemplate = require('../templates/other-user-template.handlebars')
 
 function onUploadPicSuccess (data) {
-  console.log(data)
+  console.log('upload complete!')
 }
 
 function onUploadPicFailure (data) {
@@ -12,6 +12,7 @@ function onUploadPicFailure (data) {
 }
 
 function getOtherUserSuccess (data) {
+  data.user.createdAt = (new Date(data.user.createdAt).toDateString())
   const otherUserHtml = otherUserTemplate({user: data.user})
   $('#profile-page').html(otherUserHtml)
   $('#tome-content').addClass('hidden')
@@ -21,6 +22,7 @@ function getOtherUserSuccess (data) {
 }
 
 function getUserSuccess (data) {
+  data.user.createdAt = (new Date(data.user.createdAt).toDateString())
   const userHtml = userTemplate({ user: data.user })
   $('#profile-page').html(userHtml)
   $('#tome-content').addClass('hidden')

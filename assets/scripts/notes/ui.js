@@ -6,10 +6,14 @@ const tomeUi = require('../tomes/ui')
 const store = require('../store')
 const viewbodyTemplate = require('../templates/view-body-template.handlebars')
 const tomeNotesTemplate = require('../templates/tome-notes-template.handlebars')
+const favUi = require('../favorite/ui')
 
 function createNoteSuccess () {
+  $('.form-input[type="text"]').val('')
+  $('#note-message').text('Note created!')
   tomeApi.showTome(store.viewItemId)
     .then(refreshTomeNotes)
+    .then(favUi.refreshNotebar)
     .catch(ui.viewTomeFailure)
 }
 
@@ -22,6 +26,7 @@ function confirmUpdateNoteSuccess () {
 function confirmDeleteNoteSuccess () {
   tomeApi.showTome(store.viewItemId)
     .then(refreshTomeNotes)
+    .then(favUi.refreshNotebar)
     .catch(ui.viewTomeFailure)
 }
 
@@ -54,6 +59,7 @@ function refreshTomeNotes (data) {
   }
   const tomeNotesHtml = tomeNotesTemplate({notes: data.tome[0].notes})
   $('#collapseExample').html(tomeNotesHtml)
+  return data
 }
 
 function refreshCurrentTome (data) {
@@ -91,11 +97,16 @@ function cancelDeleteNote () {
   $(`.delete-check[data-id=${store.deleteNoteId}]`).addClass('hidden')
 }
 
+function createNoteFailure () {
+  $('#note-message').text('Please fill out the text box')
+}
+
 module.exports = {
   cancelDeleteNote,
   confirmDeleteNoteSuccess,
   confirmUpdateNoteSuccess,
   createNoteSuccess,
   cancelUpdateNote,
-  refreshCurrentTome
+  refreshCurrentTome,
+  createNoteFailure
 }

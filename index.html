@@ -89,7 +89,7 @@
 
       <!-- Footer -->
       <div class="bottom-bar">
-        <div class="container col-6 foot-message border rounded"><a href="https://github.com/ArKaneVision" target="_blank">Kane Two Feathers</a> & <a href="https://github.com/taharon" target="_blank">Tal Aharon</a></div>
+        <div id="user-message" class="container col-6 foot-message border rounded"><a href="https://github.com/ArKaneVision" target="_blank">Kane Two Feathers</a> & <a href="https://github.com/taharon" target="_blank">Tal Aharon</a></div>
       </div>
     </div>
 
@@ -107,9 +107,9 @@
             <div class="modal-body">
               <form id="sign-up">
                 <fieldset>
-                    <input class="paper-input" type="text" name="credentials[email]" placeholder="username"><br>
-                    <input class="paper-input" type="password" name="credentials[password]" placeholder="Password"><br>
-                    <input class="paper-input" type="password" name="credentials[password_confirmation]" placeholder="Confirm password"><br>
+                    <input class="auth-input paper-input" type="text" name="credentials[email]" placeholder="username"><br>
+                    <input class="auth-input paper-input" type="password" name="credentials[password]" placeholder="Password"><br>
+                    <input class="auth-input paper-input" type="password" name="credentials[password_confirmation]" placeholder="Confirm password"><br>
                     <button id="sign-up-btn" type="button" class="btn btn-primary" data-dismiss="modal">Confirm</button>
                 </fieldset>
               </form>
@@ -131,8 +131,8 @@
             <div class="modal-body">
               <form id="sign-in">
                 <fieldset>
-                    <input class="paper-input" type="text" name="credentials[email]" placeholder="username"><br>
-                    <input class="paper-input" type="password" name="credentials[password]" placeholder="Password"><br>
+                    <input class="auth-input paper-input" type="text" name="credentials[email]" placeholder="username"><br>
+                    <input class="auth-input paper-input" type="password" name="credentials[password]" placeholder="Password"><br>
                     <button id="sign-in-btn" type="button" class="btn btn-primary" data-dismiss="modal">Confirm</button>
                 </fieldset>
               </form>
@@ -153,8 +153,8 @@
             </div>
             <div class="modal-body">
               <form id="change-password">
-                <input class="form-input paper-input" type="password" name="passwords[old]" placeholder="Old Password">
-                <input id="CPEnter" class="form-input paper-input" type="password" name="passwords[new]" placeholder="New Password">
+                <input class="auth-input form-input paper-input" type="password" name="passwords[old]" placeholder="Old Password">
+                <input id="CPEnter" class="auth-input form-input paper-input" type="password" name="passwords[new]" placeholder="New Password">
               </form>
             </div>
             <div class="modal-footer">
