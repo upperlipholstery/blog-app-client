@@ -68,7 +68,6 @@ function onDeleteTome (event) {
 function onCreateTome (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log(data)
   if (data.tome.body === '' || data.tome.title === '') {
     $('.input-message').text('title or body blank')
   } else {

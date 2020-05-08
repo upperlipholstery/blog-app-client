@@ -10,8 +10,40 @@ const favoriteEvents = require('./favorite/events')
 const noteUi = require('./notes/ui')
 const ui = require('./ui')
 const profileEvents = require('./profile/events')
+const store = require('./store')
 // use require without a reference to ensure a file is bundled
 // require('./example')
+
+const onDirectToTomes = function (event) {
+  store.location = 'feed'
+  tomeEvents.onViewTomes(event)
+}
+
+const onDirectToMyTomes = function (event) {
+  store.location = 'myTomes'
+  tomeEvents.onUserViewTomes(event)
+}
+
+const onDirectToArchive = function (event) {
+  store.location = 'archive'
+  favoriteEvents.onFavoriteTomes(event)
+}
+
+const whatToReset = function (event) {
+  switch (store.location) {
+    case 'feed':
+      tomeEvents.onViewTomes(event)
+      break
+    case 'myTomes':
+      tomeEvents.onUserViewTomes(event)
+      break
+    case 'archive':
+      favoriteEvents.onFavoriteTomes(event)
+      break;
+    default:
+      tomeEvents.onViewTomes(event)
+  }
+}
 
 $(() => {
   // AUTH EVENTS
@@ -24,9 +56,8 @@ $(() => {
   $('#account-menu').on('click', ui.showAccount)
 
   // View events
-  $('#view-tomes-btn').on('click', tomeEvents.onViewTomes)
-  $('#view-tomes-btn-2').on('click', tomeEvents.onViewTomes)
-  $('#view-user-tomes-btn').on('click', tomeEvents.onUserViewTomes)
+  $('.view-tomes-btn').on('click', onDirectToTomes)
+  $('#view-user-tomes-btn').on('click', onDirectToMyTomes)
   $('.content').on('click', '.view-modal', tomeEvents.selectView)
 
   // Create tome action
@@ -45,7 +76,7 @@ $(() => {
 
   // Favorite tome
   $('#viewModalLong').on('click', '.toggle-favorite', favoriteEvents.onToggleFavorite)
-  $('#view-favorite-tomes-btn').on('click', favoriteEvents.onFavoriteTomes)
+  $('#view-favorite-tomes-btn').on('click', onDirectToArchive)
 
   // Like evenet
   $('#viewModalLong').on('click', '.toggle-like', favoriteEvents.onToggleLike)
@@ -73,9 +104,11 @@ $(() => {
   $('.right-body').on('click', '.tome-icon', profileEvents.onOtherProfile)
   $('#viewModalLong').on('click', '.view-icon', profileEvents.onOtherProfile)
 
+  // reset the view page when closing a modal
+  $('#viewModalLong').on('click', '.trigger-reset-close', whatToReset)
+
   // Enter key confirms sign in/up
   $('#SUEnter').keypress(function (event) {
-    console.log(event.keyCode)
     if (event.keyCode === 13) {
       $('.sign-up-button').click()
     }

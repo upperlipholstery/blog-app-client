@@ -21,7 +21,29 @@ function toggleFavorite (id) {
   })
 }
 
+function likeTomes () {
+  return $.ajax({
+    url: config.apiUrl + '/likes',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+function toggleLike (id) {
+  return $.ajax({
+    url: config.apiUrl + `/likes/${id}`,
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   favoriteTomes,
-  toggleFavorite
+  toggleFavorite,
+  likeTomes,
+  toggleLike
 }

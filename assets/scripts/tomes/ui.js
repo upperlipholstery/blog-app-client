@@ -28,7 +28,6 @@ function viewTomesSuccess (data) {
       }
     }
   })
-  console.log(data, 'data')
   const showTomesHtml = showTomesTemplate({tomes: data.tomes})
   $('.content').html(showTomesHtml)
   $('#tome-content').removeClass('hidden')
@@ -37,7 +36,6 @@ function viewTomesSuccess (data) {
 }
 
 function viewUserTomesSuccess (data) {
-  console.log(data)
   if (data.user.tomes.length === 0) {
     $('#tomes-message').removeClass('hidden')
     $('#tomes-message').text('No Tomes Written')
@@ -58,7 +56,6 @@ function viewUserTomesSuccess (data) {
 }
 
 function viewSingleTomeSuccess (data) {
-  console.log(data)
   const a = new Date(data.tome.createdAt)
   data.tome.createdAt = a.toDateString()
   data.tome.createdTime = a.toTimeString()
@@ -78,8 +75,10 @@ function viewSingleTomeSuccess (data) {
     if (store.user.favTomes.includes(data.tome._id)) {
       data.tome.favorite = true
     }
+    if (store.user.likedTomes.includes(data.tome._id)) {
+      data.tome.liked = true
+    }
   }
-  console.log(data)
   const viewTomeHtml = store.user !== undefined ? viewTomeTemplate({tome: data.tome}) : viewTomeTemplateNoInput({tome: data.tome})
   $('#viewModalLong').html(viewTomeHtml)
 }
@@ -124,19 +123,21 @@ function createTomeSuccess () {
 }
 
 function deleteTomesFailure () {
-  console.log('delete Tomes failed')
+  $('#tomes-message').removeClass('hidden')
+  $('#tomes-message').text('Failed to delete tome.')
 }
 
 function refreshListFailure () {
-  console.log('delete Tomes failed')
+  $('#tomes-message').removeClass('hidden')
+  $('#tomes-message').text('Failed to retrieve tomes.')
 }
 
 function viewTomesFailure () {
-  console.log('viewTomes failed')
+
 }
 
 function createTomeFailure () {
-  $('.messge').text('failed to create tome')
+
 }
 
 module.exports = {

@@ -61,16 +61,17 @@ function signInFailure () {
 }
 
 function signOutFailure () {
-  console.log('sign out failed')
+  $('#tomes-message').removeClass('hidden')
+  $('#tomes-message').text('Sign out failed. Please refresh page.')
 }
 
 function changePasswordSuccess () {
-  console.log('change password working')
   $('form input[type="password"]').val('')
 }
 
 function changePasswordFailure () {
-  console.log('change password failed')
+  $('#tomes-message').removeClass('hidden')
+  $('#tomes-message').text('Changing password failed.')
 }
 
 module.exports = {

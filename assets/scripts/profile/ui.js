@@ -2,9 +2,10 @@
 
 const userTemplate = require('../templates/user-template.handlebars')
 const otherUserTemplate = require('../templates/other-user-template.handlebars')
+const resetProfile = require('../ui.js')
 
 function onUploadPicSuccess (data) {
-  console.log('upload complete!')
+
 }
 
 function onUploadPicFailure (data) {

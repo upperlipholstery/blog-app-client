@@ -8,7 +8,7 @@ function onUploadPic (event) {
   event.preventDefault()
   const formData = new FormData($('#avatar')[0])
   api.createUpload(formData)
-    .then(ui.onUploadPicSuccess)
+    .then(onUserProfile)
     .catch(ui.onUploadPicFailure)
 }
 
@@ -24,7 +24,6 @@ function onChangeBio (event) {
   api.updateBio(newBio)
     .then(ui.onUpdateBioSuccess)
     .catch(ui.onUpdateBioFailure)
-  console.log(newBio)
 }
 
 function onOtherProfile () {

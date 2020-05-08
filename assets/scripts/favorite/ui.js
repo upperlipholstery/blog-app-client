@@ -7,13 +7,13 @@ const tomeApi = require('../tomes/api')
 const tomeUi = require('../tomes/ui')
 
 function viewFavoritesSuccess (data) {
-  console.log(data)
   if (data.favTomes.length === 0) {
     $('#tomes-message').removeClass('hidden')
     $('#tomes-message').text('No Tomes Archived')
   } else {
     $('#tomes-message').addClass('hidden')
   }
+  data.favTomes.forEach(tome => tome.favorite = true)
   if (data.favTomes) {
     data.favTomes = data.favTomes.sort(function (a, b) {
       a = new Date(a.createdAt)
@@ -26,8 +26,6 @@ function viewFavoritesSuccess (data) {
     $('#tome-content').removeClass('hidden')
     $('#create-tome-menu').addClass('hidden')
     $('.account-page').addClass('hidden')
-  } else {
-    console.log('no favorites')
   }
 }
 
@@ -44,15 +42,11 @@ function toggleLikeSuccess () {
 }
 
 function refreshNotebar (data) {
-  console.log(data, 'before notOwn')
-  console.log(store.user)
-  console.log(data.tome.owner)
   if (data.tome.owner._id === store.user._id) {
     data.tome.notOwn = false
   } else {
     data.tome.notOwn = true
   }
-  console.log(data, 'after notOwn')
   if (store.user.favTomes.includes(data.tome._id)) {
     data.tome.favorite = true
   }
@@ -64,15 +58,18 @@ function refreshNotebar (data) {
 }
 
 function viewFavoritesFailure () {
-  console.log('viewFavorites failed')
+  $('#tomes-message').removeClass('hidden')
+  $('#tomes-message').text('Failed to retrieve favorites.')
 }
 
 function toggleFavoriteFailure () {
-  console.log('toggleFavorites failed')
+  $('#tomes-message').removeClass('hidden')
+  $('#tomes-message').text('Failed to toggle favorites.')
 }
 
 function toggleLikeFailure () {
-  console.log('toggle like failuire')
+  $('#tomes-message').removeClass('hidden')
+  $('#tomes-message').text('Failed to toggle likes.')
 }
 
 module.exports = {

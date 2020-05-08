@@ -16,12 +16,12 @@
 {{/if}}
 {{#if tome.notOwn}}
 {{#if tome.liked}}
-<button data-id="{{tome._id}}" type="button" class="btn btn-success my-2 my-sm-0 toggle-like float-right align-middle input-button">
-  Like
-</button>
-{{else}}
 <button data-id="{{tome._id}}" type="button" class="btn btn-danger my-2 my-sm-0 toggle-like float-right align-middle input-button">
   Unlike
+</button>
+{{else}}
+<button data-id="{{tome._id}}" type="button" class="btn btn-success my-2 my-sm-0 toggle-like float-right align-middle input-button">
+  Like
 </button>
 {{/if}}
 {{/if}}

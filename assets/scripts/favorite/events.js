@@ -34,7 +34,7 @@ function onToggleLike () {
   } else {
     store.user.likedTomes = store.user.likedTomes.filter(like => like !== store.likeToggleTomeId)
   }
-  api.toggleFavorite(store.likeToggleTomeId)
+  api.toggleLike(store.likeToggleTomeId)
     .then(ui.toggleLikeSuccess)
     .catch(ui.toggleLikeFailure)
 }

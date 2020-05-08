@@ -3,7 +3,7 @@
     <div class="modal-header">
       <image class="view-icon" data-id='{{tome.owner._id}}' src="{{tome.imageUrl}}" data-dismiss="modal">
       <div class="modal-title" id="view-title"><h3>{{tome.title}}<h3><h5>Written by: <a class="user-link" data-dismiss="modal" data-id='{{tome.owner._id}}'>{{tome.owner.email}}</a> on {{tome.createdAt}}</h5></div>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close trigger-reset-close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -30,12 +30,12 @@
           {{/if}}
           {{#if tome.notOwn}}
           {{#if tome.liked}}
-          <button data-id="{{tome._id}}" type="button" class="input-button btn btn-success my-2 my-sm-0 toggle-like float-right align-middle">
-            Like
-          </button>
-          {{else}}
           <button data-id="{{tome._id}}" type="button" class="input-button btn btn-danger my-2 my-sm-0 toggle-like float-right align-middle">
             Unlike
+          </button>
+          {{else}}
+          <button data-id="{{tome._id}}" type="button" class="input-button btn btn-success my-2 my-sm-0 toggle-like float-right align-middle">
+            Like
           </button>
           {{/if}}
           {{/if}}
@@ -48,6 +48,7 @@
           <div class="single-note">
             <div>
               <h5>~ {{note.ownerName}} ~</h5>
+              <image class="tome-icon" data-id='{{note.owner._id}}' src="{{note.imageUrl}}">
             </div>
             <div class="note-body" data-id="{{note._id}}">
               <p class="written-text">{{note.body}}</p>
@@ -88,7 +89,7 @@
       </div>
 
       <div class="modal-footer close-stuck">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close Tome</button>
+        <button type="button" class="btn btn-secondary trigger-reset-close" data-dismiss="modal">Close Tome</button>
       </div>
     </div>
   </div>
