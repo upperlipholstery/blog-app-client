@@ -2,7 +2,7 @@
   <section data-id="{{tome._id}}" class="tome-item">
     <div class="card border-dark" style="width: 15rem;">
       <div class="card-body">
-          <h3 class="cover-text">{{limit tome.title 10}}</h3>
+          <h3 class="cover-text">{{limit tome.title 15}}</h3>
           <p class="cover-text"><a href='#' class="user-link" data-id='{{tome.owner._id}}'>Author: {{tome.owner.email}}</a></p>
           <p class="cover-text">{{tome.createdAt}} {{tome.createdTime}}</p>
           <p class="cover-text">notes: {{length tome.notes}}</p>

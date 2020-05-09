@@ -85,36 +85,19 @@ function viewSingleTomeSuccess (data) {
 
 function deleteTomesSuccess () {
   api.getUserTomes(store.user._id)
-    .then(refreshListSuccess)
+    .then(viewUserTomesSuccess)
     .catch(refreshListFailure)
 }
 
 function selectUpdateTomesSuccess (data) {
-  const populateUpdateHtml = populateUpdateTemplate({tome: data.tome[0]})
+  const populateUpdateHtml = populateUpdateTemplate({tome: data.tome})
   $('#editModalLong').html(populateUpdateHtml)
 }
 
 function updateTomesSuccess () {
   api.getUserTomes(store.user._id)
-    .then(refreshListSuccess)
+    .then(viewUserTomesSuccess)
     .catch(refreshListFailure)
-}
-
-function refreshListSuccess (data) {
-  if (data.tomes.length === 0) {
-    $('#tomes-message').removeClass('hidden')
-    $('#tomes-message').text('No Tomes Written')
-  } else {
-    $('#tomes-message').addClass('hidden')
-  }
-  data.tomes = data.tomes.sort(function (a, b) {
-    a = new Date(a.createdAt)
-    b = new Date(b.createdAt)
-    return a > b ? -1 : a < b ? 1 : 0
-  })
-  data.tomes.forEach(x => { x.createdAt = (new Date(x.createdAt).toDateString()) })
-  const showUserTomesHtml = showUserTomesTemplate({tomes: data.tomes})
-  $('.content').html(showUserTomesHtml)
 }
 
 function createTomeSuccess () {

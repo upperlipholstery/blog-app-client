@@ -51,7 +51,7 @@ img {
   padding: 20px;
 }
 
-.account-page {
+#profile-page {
   background: linear-gradient(90deg, rgba(245,209,95,1) 0%, rgba(244,224,167,1) 25%, rgba(244,225,173,1) 50%, rgba(244,223,165,1) 75%, rgba(245,209,95,1) 100%);
   margin-top: 45px;
   padding: 20px;
@@ -145,6 +145,12 @@ img {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-left: 15px;
+}
+
+.my-cover-text {
+  background: -webkit-linear-gradient(top, #8f6B29, #FDE08D, #DF9F28);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .input-button {

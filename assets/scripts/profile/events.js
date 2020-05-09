@@ -28,6 +28,7 @@ function onChangeBio (event) {
 
 function onOtherProfile () {
   if (store.user) {
+    // sends you to your own profile when you click your own picture
     if ($(event.target).data('id') === store.user._id) {
       onUserProfile()
     } else {

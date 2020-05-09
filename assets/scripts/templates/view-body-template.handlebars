@@ -3,7 +3,7 @@
     <div class="modal-header">
       <image class="view-icon" data-id='{{tome.owner._id}}' src="{{tome.imageUrl}}" data-dismiss="modal">
       <div class="modal-title" id="view-title"><h3>{{tome.title}}<h3><h5>Written by: <a class="user-link" data-dismiss="modal" data-id='{{tome.owner._id}}'>{{tome.owner.email}}</a> on {{tome.createdAt}}</h5></div>
-        <button type="button" class="close trigger-reset-close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close trigger-reset-close" data-dismiss="modal" aria-label="Close" data-id="{{tome.owner._id}}">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -48,7 +48,7 @@
           <div class="single-note">
             <div>
               <h5>~ {{note.ownerName}} ~</h5>
-              <image class="tome-icon" data-id='{{note.owner._id}}' src="{{note.imageUrl}}">
+              <image class="tome-icon view-icon" data-id='{{note.owner}}' src="{{note.imageUrl}}" data-dismiss="modal">
             </div>
             <div class="note-body" data-id="{{note._id}}">
               <p class="written-text">{{note.body}}</p>
@@ -89,7 +89,7 @@
       </div>
 
       <div class="modal-footer close-stuck">
-        <button type="button" class="btn btn-secondary trigger-reset-close" data-dismiss="modal">Close Tome</button>
+        <button data-id="{{tome.owner._id}}" type="button" class="btn btn-secondary trigger-reset-close" data-dismiss="modal">Close Tome</button>
       </div>
     </div>
   </div>

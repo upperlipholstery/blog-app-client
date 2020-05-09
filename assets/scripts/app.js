@@ -29,6 +29,12 @@ const onDirectToArchive = function (event) {
   favoriteEvents.onFavoriteTomes(event)
 }
 
+const onDirectToArccount = function (event) {
+  store.location = 'account'
+  console.log(store.location)
+  profileEvents.onOtherProfile(event)
+}
+
 const whatToReset = function (event) {
   switch (store.location) {
     case 'feed':
@@ -39,7 +45,10 @@ const whatToReset = function (event) {
       break
     case 'archive':
       favoriteEvents.onFavoriteTomes(event)
-      break;
+      break
+    case 'account':
+      profileEvents.onOtherProfile(event)
+      break
     default:
       tomeEvents.onViewTomes(event)
   }
@@ -96,13 +105,13 @@ $(() => {
 
   // profile EVENTS
   $('.right-body').on('click', '#submit-avatar', profileEvents.onUploadPic)
-  $('.content').on('click', '.user-link', profileEvents.onOtherProfile)
-  $('#viewModalLong').on('click', '.user-link', profileEvents.onOtherProfile)
+  $('.content').on('click', '.user-link', onDirectToArccount)
+  $('#viewModalLong').on('click', '.user-link', onDirectToArccount)
   $('.right-body').on('click', '#bio-submit', profileEvents.onChangeBio)
 
   // profile picture events
-  $('.right-body').on('click', '.tome-icon', profileEvents.onOtherProfile)
-  $('#viewModalLong').on('click', '.view-icon', profileEvents.onOtherProfile)
+  $('.right-body').on('click', '.tome-icon', onDirectToArccount)
+  $('#viewModalLong').on('click', '.view-icon', onDirectToArccount)
 
   // reset the view page when closing a modal
   $('#viewModalLong').on('click', '.trigger-reset-close', whatToReset)

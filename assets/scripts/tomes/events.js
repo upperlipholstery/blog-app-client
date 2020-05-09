@@ -13,7 +13,6 @@ function onViewTomes (event) {
 }
 
 function onUserViewTomes () {
-  event.preventDefault()
   api.getUserTomes(store.user._id)
     .then(ui.viewUserTomesSuccess)
     .catch(ui.viewTomesFailure)
