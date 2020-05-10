@@ -5,7 +5,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
-      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+      <link rel="shortcut icon" type="image" href="https://imgur.com/eZYnhD9.png">
       <link href="https://fonts.googleapis.com/css2?family=Girassol&display=swap" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Spectral&display=swap" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
@@ -14,7 +14,9 @@
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
+
     <body>
+
       <!-- Unregistered sidebar -->
       <div id="unregsidebar" class="sidenav overflow-auto">
         <div class="logo"></div>
@@ -27,16 +29,21 @@
           Sign in
         </button>
         <!-- Feed Button -->
-        <button id="view-tomes-btn" class="btn btn-secondary btn-block sidebar-item">
-          Feed
+        <button class="view-tomes-btn btn btn-secondary btn-block sidebar-item">
+          Library
         </button>
       </div>
+
       <!-- Registered sidebar -->
       <div id="regsidebar" class="sidenav overflow-auto hidden">
-        <div class="logo"></div>
+        <div class="logo2"></div>
         <!-- Feed Button 2 -->
-        <button id="view-tomes-btn-2" class="btn btn-secondary btn-block sidebar-item">
-          Feed
+        <button class="view-tomes-btn btn btn-secondary btn-block sidebar-item">
+          Library
+        </button>
+        <!-- My favorite tomes Button -->
+        <button id="view-favorite-tomes-btn" class="btn btn-secondary btn-block sidebar-item">
+          Archive
         </button>
         <!-- My tomes Button -->
         <button id="view-user-tomes-btn" class="btn btn-secondary btn-block sidebar-item">
@@ -47,23 +54,14 @@
           Write Tome
         </button>
         <!-- Account Menu -->
-        <div class="dropright">
-          <button id="account-menu" class="btn btn-secondary btn-block sidebar-item" type="button" data-toggle="dropdown">
-            Account
-          </button>
-          <!-- Change password -->
-          <div class="dropdown-menu" aria-labelledby="dropdown">
-            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#changePasswordModal">
-              Change Password
-            </button>
-            <!-- Sign Out -->
-            <button id="sign-out-btn" class="btn btn-secondary">
-              Sign Out
-            </button>
-          </div>
-        </div>
+        <button id="account-menu" class="btn btn-secondary btn-block sidebar-item" type="button">
+          Account
+        </button>
       </div>
-      <div class="right-body container col-12 d-inline-flex">
+
+      <!-- Main content -->
+      <div class="right-body container col-12">
+
         <!-- Input Menu -->
         <div id="create-tome-menu" class="container col-10 rounded border border-black hidden">
           <form id="create-tome">
@@ -71,18 +69,39 @@
               <input class="form-input form-control paper-input" type="text" name="tome[title]" placeholder="Title">
             </div>
             <div class="form-group">
-              <textarea class="form-input form-control paper-input" name="tome[body]" placeholder="Body" rows="30"></textarea>
+              <textarea class="form-input form-control paper-input" name="tome[body]" placeholder="Body" rows="25"></textarea>
             </div>
-            <input type="submit" value="Create" class="btn btn-outline-light my-2 my-sm-0">
+            <!-- Input message display  -->
+            <span class="input-message">&nbsp;</span>
+            <input type="submit" value="Create" class="btn btn-secondary my-2 my-sm-0 float-right">
           </form>
-          <!-- Message display  -->
-          <div class="message"></div>
         </div>
-      <!-- handlebars display -->
+
+        <!-- Account menu -->
+        <div class="account-page hidden">
+
+          <!-- Profile page -->
+          <div id="profile-page" class="container col-10 rounded border border-black">
+          </div>
+
+          <!-- Tomes of selected user -->
+          <div id="user-tomes" class="content container col-12 d-flex p-2 flex-wrap">
+          </div>
+
+        </div>
+      <!-- Tome display -->
       <div id="tome-content">
         <div class="content container col-12 d-flex p-2 flex-wrap" id="content"></div>
       </div>
+
+      <h2 id='tomes-message' class="container col-3 tomes-message border rounded hidden"></h2>
+
+      <!-- Footer -->
+      <div class="bottom-bar">
+        <div id="user-message" class="container col-6 foot-message border rounded"><a href="https://github.com/ArKaneVision" target="_blank">Kane Two Feathers</a> & <a href="https://github.com/taharon" target="_blank">Tal Aharon</a></div>
+      </div>
     </div>
+
     <!-- Modals -->
       <!-- Sign Up Modal -->
       <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -97,9 +116,9 @@
             <div class="modal-body">
               <form id="sign-up">
                 <fieldset>
-                    <input class="paper-input" type="text" name="credentials[email]" placeholder="username"><br>
-                    <input class="paper-input" type="password" name="credentials[password]" placeholder="Password"><br>
-                    <input class="paper-input" type="password" name="credentials[password_confirmation]" placeholder="Confirm password"><br>
+                    <input class="auth-input paper-input" type="text" name="credentials[email]" placeholder="username"><br>
+                    <input class="auth-input paper-input" type="password" name="credentials[password]" placeholder="Password"><br>
+                    <input class="auth-input paper-input" type="password" name="credentials[password_confirmation]" placeholder="Confirm password"><br>
                     <button id="sign-up-btn" type="button" class="btn btn-primary" data-dismiss="modal">Confirm</button>
                 </fieldset>
               </form>
@@ -107,6 +126,7 @@
           </div>
         </div>
       </div>
+
       <!-- Sign In Modal -->
       <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -120,8 +140,8 @@
             <div class="modal-body">
               <form id="sign-in">
                 <fieldset>
-                    <input class="paper-input" type="text" name="credentials[email]" placeholder="username"><br>
-                    <input class="paper-input" type="password" name="credentials[password]" placeholder="Password"><br>
+                    <input class="auth-input paper-input" type="text" name="credentials[email]" placeholder="username"><br>
+                    <input class="auth-input paper-input" type="password" name="credentials[password]" placeholder="Password"><br>
                     <button id="sign-in-btn" type="button" class="btn btn-primary" data-dismiss="modal">Confirm</button>
                 </fieldset>
               </form>
@@ -129,6 +149,7 @@
           </div>
         </div>
       </div>
+
       <!-- Change Password Modal -->
       <div class="modal fade changePasswordModal" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -141,8 +162,8 @@
             </div>
             <div class="modal-body">
               <form id="change-password">
-                <input class="form-input paper-input" type="password" name="passwords[old]" placeholder="Old Password">
-                <input id="CPEnter" class="form-input paper-input" type="password" name="passwords[new]" placeholder="New Password">
+                <input class="auth-input form-input paper-input" type="password" name="passwords[old]" placeholder="Old Password">
+                <input id="CPEnter" class="auth-input form-input paper-input" type="password" name="passwords[new]" placeholder="New Password">
               </form>
             </div>
             <div class="modal-footer">
@@ -152,6 +173,7 @@
           </div>
         </div>
       </div>
+
     <!-- Delete Modal -->
     <div class="modal fade deleteModal" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -172,6 +194,7 @@
         </div>
       </div>
     </div>
+
     <!-- Edit Modal -->
     <div data-id="{{practice.id}}" id="editModalLong" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
       <div class="modal-dialog modal-xl" role="document">
@@ -199,6 +222,7 @@
         </div>
       </div>
     </div>
+
     <!-- View Modal -->
     <div id="viewModalLong" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
       <div class="modal-dialog modal-xl" role="document">
@@ -213,11 +237,9 @@
             Filler
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary cancel-update" data-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-success update-button" data-dismiss="modal">Confirm</button>
           </div>
         </div>
       </div>
     </div>
-    </body>
+  </body>
 </html>

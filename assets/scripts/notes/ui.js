@@ -1,57 +1,104 @@
 'use strict'
 
 const ui = require('./ui')
-// const api = require('./api')
 const tomeApi = require('../tomes/api')
+const tomeUi = require('../tomes/ui')
 const store = require('../store')
-// const getFormFields = require('../../../lib/get-form-fields')
 const viewbodyTemplate = require('../templates/view-body-template.handlebars')
+const tomeNotesTemplate = require('../templates/tome-notes-template.handlebars')
+const favUi = require('../favorite/ui')
 
 function createNoteSuccess () {
+  $('.form-input[type="text"]').val('')
+  $('#note-message').text('Note created!')
   tomeApi.showTome(store.viewItemId)
-    .then(refreshCurrentTome)
+    .then(refreshTomeNotes)
+    .then(favUi.refreshNotebar)
     .catch(ui.viewTomeFailure)
 }
 
 function confirmUpdateNoteSuccess () {
   tomeApi.showTome(store.viewItemId)
-    .then(refreshCurrentTome)
+    .then(refreshTomeNotes)
     .catch(ui.viewTomeFailure)
 }
 
 function confirmDeleteNoteSuccess () {
   tomeApi.showTome(store.viewItemId)
-    .then(refreshCurrentTome)
+    .then(refreshTomeNotes)
+    .then(favUi.refreshNotebar)
     .catch(ui.viewTomeFailure)
 }
 
 function cancelUpdateNote () {
+  $(`.main-note-buttons[data-id=${store.updateNoteId}]`).removeClass('hidden')
+  $('.edit-note').attr('disabled', false)
+  $('.delete-note').attr('disabled', false)
   tomeApi.showTome(store.viewItemId)
-    .then(refreshCurrentTome)
+    .then(refreshTomeNotes)
     .catch(ui.viewTomeFailure)
 }
 
-function refreshCurrentTome (data) {
-  const a = new Date(data.tome[0].createdAt)
-  data.tome[0].createdAt = a.toDateString()
-  data.tome[0].createdTime = a.toTimeString()
+function refreshTomeNotes (data) {
   if (store.user) {
-    data.tome[0].notes.forEach(x => {
+    if (data.tome.owner._id === store.user._id) {
+      data.tome.notOwn = false
+    } else {
+      data.tome.notOwn = true
+    }
+    data.tome.notes.forEach(x => {
       if (x.owner === store.user._id) {
         x.own = true
       } else {
         x.own = false
       }
     })
+    if (store.user.favTomes.includes(data.tome._id)) {
+      data.tome.favorite = true
+    }
   }
-  const viewTomeHtml = viewbodyTemplate({tome: data.tome[0]})
+  const tomeNotesHtml = tomeNotesTemplate({notes: data.tome.notes})
+  $('#collapseExample').html(tomeNotesHtml)
+  return data
+}
+
+function refreshCurrentTome (data) {
+  const a = new Date(data.tome[0].createdAt)
+  data.tome.createdAt = a.toDateString()
+  data.tome.createdTime = a.toTimeString()
+  if (store.user) {
+    if (data.tome.owner._id === store.user._id) {
+      data.tome.notOwn = false
+    } else {
+      data.tome.notOwn = true
+    }
+    data.tome.notes.forEach(x => {
+      if (x.owner === store.user._id) {
+        x.own = true
+      } else {
+        x.own = false
+      }
+    })
+    if (store.user.favTomes.includes(data.tome._id)) {
+      data.tome[0].favorite = true
+    }
+  }
+  const viewTomeHtml = viewbodyTemplate({tome: data.tome})
   $('#viewModalLong').html(viewTomeHtml)
+  tomeApi.viewTomes()
+    .then(tomeUi.viewTomesSuccess)
+    .catch(tomeUi.viewTomesFailure)
 }
 
 function cancelDeleteNote () {
-  $(`.main-note-buttons`).removeClass('hidden')
+  $(`.main-note-buttons[data-id=${store.deleteNoteId}]`).removeClass('hidden')
+  $('.edit-note').attr('disabled', false)
+  $('.delete-note').attr('disabled', false)
   $(`.delete-check[data-id=${store.deleteNoteId}]`).addClass('hidden')
-  $(`.delete-note[data-id=${store.deleteNoteId}]`).removeClass('hidden')
+}
+
+function createNoteFailure () {
+  $('#note-message').text('Please fill out the text box')
 }
 
 module.exports = {
@@ -59,5 +106,7 @@ module.exports = {
   confirmDeleteNoteSuccess,
   confirmUpdateNoteSuccess,
   createNoteSuccess,
-  cancelUpdateNote
+  cancelUpdateNote,
+  refreshCurrentTome,
+  createNoteFailure
 }

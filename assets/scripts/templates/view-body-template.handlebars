@@ -1,56 +1,95 @@
 <div class="modal-dialog modal-xl" role="document">
   <div class="modal-content">
     <div class="modal-header">
-      <div class="modal-title" id="view-title"><h3>{{tome.title}}<h3><h5>Written by: {{tome.owner.email}} on {{tome.createdAt}}</h5></div>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <image class="view-icon" data-id='{{tome.owner._id}}' src="{{tome.imageUrl}}" data-dismiss="modal">
+      <div class="modal-title" id="view-title"><h3>{{tome.title}}<h3><h5>Written by: <a class="user-link" data-dismiss="modal" data-id='{{tome.owner._id}}'>{{tome.owner.email}}</a> on {{tome.createdAt}}</h5></div>
+        <button type="button" class="close trigger-reset-close" data-dismiss="modal" aria-label="Close" data-id="{{tome.owner._id}}">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body" id="view-body">
+
         <p class="written-text">{{tome.body}}</p><br>
-        <div class="fancy-break"></div>
+
+      <div class="notebar">
+        {{#if tome.notOwn}}
+          {{#if tome.favorite}}
+          <button data-id="{{tome._id}}" type="button" class="input-button btn btn-secondary my-2 my-sm-0 toggle-favorite float-right align-middle">
+            Remove
+          </button>
+          {{else}}
+          <button data-id="{{tome._id}}" type="button" class="input-button btn btn-warning my-2 my-sm-0 toggle-favorite fav-btn float-right align-middle">
+            Archive
+          </button>
+          {{/if}}
+          {{/if}}
+          {{#if tome.notes}}
+          <button class="btn btn-dark float-right input-button" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Notes
+          </button>
+          {{/if}}
+          {{#if tome.notOwn}}
+          {{#if tome.liked}}
+          <button data-id="{{tome._id}}" type="button" class="input-button btn btn-danger my-2 my-sm-0 toggle-like float-right align-middle">
+            Unlike
+          </button>
+          {{else}}
+          <button data-id="{{tome._id}}" type="button" class="input-button btn btn-success my-2 my-sm-0 toggle-like float-right align-middle">
+            Like
+          </button>
+          {{/if}}
+          {{/if}}
+      </div>
+
+      <div class="fancy-break"></div>
+
+      <div class="collapse" id="collapseExample">
         {{#each tome.notes as |note|}}
           <div class="single-note">
             <div>
               <h5>~ {{note.ownerName}} ~</h5>
+              <image class="tome-icon view-icon" data-id='{{note.owner}}' src="{{note.imageUrl}}" data-dismiss="modal">
             </div>
             <div class="note-body" data-id="{{note._id}}">
               <p class="written-text">{{note.body}}</p>
             </div>
             {{#if note.own}}
-            <div class="note-buttons">
-              <div class="main-note-buttons">
-                <button data-id="{{note._id}}" type="button" class="btn btn-outline-success btn-sm edit-note">
-                  Edit
-                </button>
-                <button data-id="{{note._id}}" type="button" class="btn btn-outline-danger btn-sm delete-note">
-                  Delete
-                </button>
+              <div class="note-buttons">
+                <div data-id="{{note._id}}" class="main-note-buttons">
+                  <button data-id="{{note._id}}" type="button" class="btn btn-outline-success btn-sm edit-note">
+                    Edit
+                  </button>
+                  <button data-id="{{note._id}}" type="button" class="btn btn-outline-danger btn-sm delete-note">
+                    Delete
+                  </button>
+                </div>
+                <div data-id="{{note._id}}" class="delete-check hidden">
+                  <button data-id="{{note._id}}" type="button" class="btn btn-outline-danger btn-sm my-2 my-sm-0 confirm-note-delete">
+                    Confirm
+                  </button>
+                  <button data-id="{{note._id}}" type="button" class="btn btn-outline-secondary btn-sm my-2 my-sm-0 cancel-note-delete">
+                    Cancel
+                  </button>
+                </div>
               </div>
-              <div data-id="{{note._id}}" class="delete-check hidden">
-                <button data-id="{{note._id}}" type="button" class="btn btn-outline-danger btn-sm my-2 my-sm-0 confirm-note-delete">
-                  Confirm
-                </button>
-                <button data-id="{{note._id}}" type="button" class="btn btn-outline-secondary btn-sm my-2 my-sm-0 cancel-note-delete">
-                  Cancel
-                </button>
-              </div>
-            </div>
-          {{/if}}
-        </div>
-          <div class="fancy-break"></div>
-          {{/each}}
-          <div id="create-note-menu" class="container col-12">
-            <form id="create-note">
-              <div class="form-group">
-                <textarea class="form-input form-control paper-input" name="note[body]" placeholder="Body" rows="5"></textarea>
-              </div>
-              <input type="submit" value="Submit" class="btn btn-outline-dark my-2 my-sm-0">
-            </form>
+              {{else}}
+            {{/if}}
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
+          <div class="fancy-break"></div>
+        {{/each}}
+      </div>
+
+      <div id="create-note-menu" class="container col-12">
+        <form id="create-note">
+          <div class="form-group">
+            <textarea class="form-input form-control paper-input" type="text" name="note[body]" placeholder="Leave a note!" rows="5"></textarea>
+          </div>
+          <input type="submit" value="Submit Note" class="btn btn-outline-dark my-2 my-sm-0"><span class="ml-1" id="note-message"></span>
+        </form>
+      </div>
+
+      <div class="modal-footer close-stuck">
+        <button data-id="{{tome.owner._id}}" type="button" class="btn btn-secondary trigger-reset-close" data-dismiss="modal">Close Tome</button>
+      </div>
     </div>
   </div>

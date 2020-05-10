@@ -1,6 +1,7 @@
 <div class="modal-dialog modal-xl" role="document">
   <div class="modal-content">
     <div class="modal-header">
+      <image class="view-icon"  data-id='{{tome.owner._id}}' src="{{tome.imageUrl}}" data-dismiss="modal">
       <div class="modal-title" id="view-title"><h3>{{tome.title}}<h3><h5>Written by: {{tome.owner.email}} on {{tome.createdAt}}</h5></div>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -8,11 +9,20 @@
       </div>
       <div class="modal-body" id="view-body">
         <p class="written-text">{{tome.body}}</p><br>
+        <div class="notebar">
+          {{#if tome.notes}}
+          <button class="btn btn-dark float-right align-middle" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Notes
+          </button>
+          {{/if}}
+        </div>
         <div class="fancy-break"></div>
+        <div class="collapse" id="collapseExample">
         {{#each tome.notes as |note|}}
         <div class="single-note">
           <div>
             <h5>~ {{note.ownerName}} ~</h5>
+            <image class="tome-icon" src="{{note.imageUrl}}">
           </div>
           <div class="note-body" data-id="{{note._id}}">
             <p class="written-text">{{note.body}}</p><br>
@@ -20,8 +30,9 @@
         </div>
         <div class="fancy-break"></div>
         {{/each}}
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+        <div class="modal-footer close-stuck">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close Tome</button>
         </div>
     </div>
   </div>

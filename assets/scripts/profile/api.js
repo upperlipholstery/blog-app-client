@@ -3,27 +3,22 @@
 const store = require('../store')
 const config = require('../config')
 
-function createComment (data) {
+const createUpload = formData => {
   return $.ajax({
-    url: config.apiUrl + '/comments',
+    url: config.apiUrl + '/uploads/',
     method: 'POST',
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
-    data
+    data: formData,
+    contentType: false,
+    processData: false
   })
 }
 
-function showComment (id) {
+function updateBio (data) {
   return $.ajax({
-    url: config.apiUrl + '/comments/' + id,
-    method: 'GET'
-  })
-}
-
-function updateComment (data, id) {
-  return $.ajax({
-    url: config.apiUrl + '/comments/' + id,
+    url: config.apiUrl + '/user_bio/',
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -32,20 +27,18 @@ function updateComment (data, id) {
   })
 }
 
-function deleteComment (data, id) {
+function getUser (id) {
   return $.ajax({
-    url: config.apiUrl + '/comments/' + id,
-    method: 'DELETE',
+    url: config.apiUrl + '/users/' + id,
+    method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token
-    },
-    data
+    }
   })
 }
 
 module.exports = {
-  createComment,
-  showComment,
-  updateComment,
-  deleteComment
+  createUpload,
+  getUser,
+  updateBio
 }

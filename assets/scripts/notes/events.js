@@ -18,7 +18,9 @@ function onCreateNote (event) {
 function onUpdateNote (event) {
   event.preventDefault()
   store.updateNoteId = $(event.target).data('id')
-  $('.main-note-buttons').addClass('hidden')
+  $(`.main-note-buttons[data-id=${store.updateNoteId}]`).addClass('hidden')
+  $('.edit-note').attr('disabled', true)
+  $('.delete-note').attr('disabled', true)
   api.showNote(store.updateNoteId)
     .then(populateNote)
     .catch(ui.updateNotesFailure)
@@ -42,9 +44,10 @@ function confirmUpdateNote (event) {
 function onDeleteNote (event) {
   event.preventDefault()
   store.deleteNoteId = $(event.target).data('id')
-  $('.main-note-buttons').addClass('hidden')
+  $(`.main-note-buttons[data-id=${store.deleteNoteId}]`).addClass('hidden')
+  $('.edit-note').attr('disabled', true)
+  $('.delete-note').attr('disabled', true)
   $(`.delete-check[data-id=${store.deleteNoteId}]`).removeClass('hidden')
-  $(`.delete-note[data-id=${store.deleteNoteId}]`).addClass('hidden')
 }
 
 function confirmDeleteNote (event) {

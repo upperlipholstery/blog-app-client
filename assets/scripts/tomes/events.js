@@ -13,7 +13,6 @@ function onViewTomes (event) {
 }
 
 function onUserViewTomes () {
-  event.preventDefault()
   api.getUserTomes(store.user._id)
     .then(ui.viewUserTomesSuccess)
     .catch(ui.viewTomesFailure)
@@ -68,9 +67,13 @@ function onDeleteTome (event) {
 function onCreateTome (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  api.createTome(data)
-    .then(ui.createTomeSuccess)
-    .catch(ui.createTomeFailure)
+  if (data.tome.body === '' || data.tome.title === '') {
+    $('.input-message').text('title or body blank')
+  } else {
+    api.createTome(data)
+      .then(ui.createTomeSuccess)
+      .catch(ui.createTomeFailure)
+  }
 }
 
 module.exports = {
