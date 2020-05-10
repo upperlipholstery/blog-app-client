@@ -10,16 +10,15 @@
   Users can also save tomes to the Archive where they can go back and read their favorites
 
   ## Technologies
-    This application was created using the following technologies:
-    *HTML
-    *CSS
-    *Bootstrap
-    *Handlebars
-    *JavaScript
-    *JQuery
-    *AWS
-    *Ajax
-    *
+    This application was created using the following technologies
+    * HTML
+    * CSS
+    * Bootstrap
+    * Handlebars
+    * JavaScript
+    * JQuery
+    * AWS
+    * Ajax
 
   ## Goals for V2
   *Give users the ability to comment on a comment to begin a nested discussion
@@ -36,22 +35,22 @@
   Proiritizing ones that could be completed easily and add the most positive UI experience.
 
   ## User Stories
-  *As a user I would like to be able to create a user account
-  *As a user I would like to be able to be able to sign in to my account
-  *As a user I would like to be able to change my password once logged in
-  *As a user I would ike to be able to create tomes that are owned by my
+  * As a user I would like to be able to create a user account
+  * As a user I would like to be able to be able to sign in to my account
+  * As a user I would like to be able to change my password once logged in
+  * As a user I would ike to be able to create tomes that are owned by my
   account and can only be modified or removed when I am signed in as that user
-  *As a user I would like to be able leave notes on tomes created by other
+  * As a user I would like to be able leave notes on tomes created by other
   users
-  *As a user I would like to have the ability to modify or remove any notes
+  * As a user I would like to have the ability to modify or remove any notes
   that I leave on a post.
-  *As a user I would like to be able to Sign out of my account.
+  * As a user I would like to be able to Sign out of my account.
 
   **Stretch Goal Stories**
-  *As a user I want to be able to save others posts to read later
-  *As a user I want to be able to like others posts
-  *As a user I would like to be abl to upload a profile picture
-  *As a user I would like to be able to see all of one users tomes and tome stats
+  * As a user I want to be able to save others posts to read later
+  * As a user I want to be able to like others posts
+  * As a user I would like to be abl to upload a profile picture
+  * As a user I would like to be able to see all of one users tomes and tome stats
 
   ## Wireframes
 
