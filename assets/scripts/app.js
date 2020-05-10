@@ -31,7 +31,6 @@ const onDirectToArchive = function (event) {
 
 const onDirectToArccount = function (event) {
   store.location = 'account'
-  console.log(store.location)
   profileEvents.onOtherProfile(event)
 }
 
